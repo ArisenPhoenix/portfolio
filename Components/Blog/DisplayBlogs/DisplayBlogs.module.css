@@ -1,0 +1,83 @@
+.blogCard {
+  background-color: black;
+  margin: 0 0 30px 0;
+  padding: 5px;
+  width: 100%;
+  box-shadow: inset 0 0 25px 5px rgb(238, 227, 27);
+  border-radius: 10px;
+  border-style: inset;
+  transition-property: inset;
+}
+
+.blogCard:hover {
+  background-color: rgb(145, 3, 3);
+  transition-property: unset;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+  -o-transition-timing-function: linear;
+}
+
+.blogCard:active {
+  background-color: green;
+  box-shadow: inset 0 0 25px 5px rgb(244, 117, 6);
+  width: 98%;
+  transition-timing-function: linear;
+  transition-duration: 100ms;
+}
+
+.title {
+  text-align: center;
+}
+
+.title,
+.body,
+.author {
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  text-indent: 1rem;
+  text-overflow: clip;
+  -ms-text-overflow: clip;
+}
+
+.author {
+  text-align: right;
+  font-size: x-small;
+  margin-right: 0.8rem;
+}
+
+.button {
+  text-align: center;
+  width: 4rem;
+  height: 2rem;
+  box-shadow: inset 0 0 0.1rem 0.1rem rgb(240, 234, 234);
+  background-color: rgba(16, 73, 180, 0.389);
+  color: white;
+  border-radius: 8px;
+  border-color: rgb(159, 159, 159);
+  transition: ease-in-out 500ms ease-out 200ms;
+  -o-animation-timing-function: ease-in-out;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.button:hover {
+  background-color: rgb(145, 3, 3);
+  transition-duration: 200ms;
+  transition-property: unset;
+  transition-timing-function: ease-in-out;
+}
+
+.button:active {
+  transition-timing-function: linear;
+  transition-duration: 200ms;
+  background-color: rgba(208, 90, 255, 0.704);
+}
+
+.buttonDiv {
+  text-align: right;
+  align-items: baseline;
+  width: 100%;
+  margin-bottom: 20px;
+}

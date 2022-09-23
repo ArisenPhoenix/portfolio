@@ -1,0 +1,11 @@
+.main {
+  display: inherit;
+  position: inherit;
+  width: 100%;
+  margin: inherit;
+  margin-top: 100px;
+}
+
+/* .row {
+  width: 100% !important;
+} */

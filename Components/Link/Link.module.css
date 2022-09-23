@@ -1,0 +1,26 @@
+.controls {
+  background-color: inherit;
+  color: inherit;
+  font-weight: bolder;
+}
+
+/* .controls:hover {
+  background-color: rgba(200, 90, 240, 0.483);
+  color: rgb(0, 0, 0);
+} */
+
+.controls:hover {
+  color: white;
+}
+
+.active {
+  background-color: rgba(251, 251, 251, 0.831);
+  color: black !important;
+  font-weight: bolder;
+}
+
+.active:hover,
+.controls:hover {
+  color: rgb(255, 34, 0) !important;
+  background-color: rgba(20, 20, 206, 0.776);
+}

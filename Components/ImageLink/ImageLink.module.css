@@ -1,0 +1,12 @@
+.main {
+  max-height: inherit !important;
+  /* display: block; */
+  padding: 0;
+  display: relative !important;
+  max-width: 50px;
+}
+
+.image {
+  width: fit-content;
+  /* height: 50px !important; */
+}

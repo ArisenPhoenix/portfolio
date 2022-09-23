@@ -1,0 +1,19 @@
+.main {
+  padding: 0 0.5%;
+  margin: 0 !important;
+  background-color: rgb(0, 0, 0);
+  box-shadow: inset 50px 0 55px 0 rgb(148, 127, 233) !important;
+}
+
+.main h1 {
+  color: white;
+}
+
+.wrapper {
+  box-shadow: 50px 0 55px rgb(148, 127, 233) !important;
+  margin: 0 !important;
+}
+
+.app {
+  padding: 0 5% 0 5%;
+}

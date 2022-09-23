@@ -1,0 +1,22 @@
+.itemContainer {
+  display: block !important;
+  background-color: inherit;
+}
+
+/* .link {
+  color: white !important;
+  background-color: rgba(255, 0, 0, 0.306) !important;
+} */
+
+/* .text {
+  color: white !important;
+} */
+
+@media screen and (max-width: 600px) {
+  .itemContainer {
+    display: block !important;
+  }
+  .navDiv {
+    display: block !important;
+  }
+}

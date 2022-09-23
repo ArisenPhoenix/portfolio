@@ -1,0 +1,20 @@
+.link {
+  color: white !important;
+  background-color: red !important;
+}
+
+.text {
+  color: white !important;
+}
+
+.text a.hover {
+  color: green;
+}
+
+.link a.hover {
+  color: green;
+}
+
+.textActive {
+  color: darkgray !important;
+}
