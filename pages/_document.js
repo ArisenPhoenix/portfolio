@@ -7,7 +7,8 @@ export default function Document() {
         <script
           src="https://kit.fontawesome.com/30d2b0e2da.js"
           crossOrigin="anonymous"
-        ></script>
+          async
+        />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -19,7 +20,6 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap"
           rel="stylesheet"
         />
-        {/* <title>Mercury</title> */}
       </Head>
       <body>
         <Main />

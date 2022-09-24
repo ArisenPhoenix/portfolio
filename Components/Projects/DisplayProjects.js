@@ -8,9 +8,6 @@ const DisplayProjects = (props) => {
   const projCtx = useContext(ProjectContext);
   const projects = projCtx.projectList;
   return projects.map((project, index) => {
-    {
-      index === 0 && console.log("projectData: ", project);
-    }
     return (
       <Col
         sm="12"
