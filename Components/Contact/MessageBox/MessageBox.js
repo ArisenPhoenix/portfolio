@@ -33,22 +33,22 @@ const MessageBox = (props) => {
     };
     console.log(data);
 
-    const response = await ax
+    await ax
       .post("/api/send_email", data)
       .then((res) => {
-        alert("Send Mail To You");
         console.log(res);
       })
       .catch((err) => {
+        alert("Uh oh! There was a problem.");
         return console.log(err);
       });
-    if (response.message) {
-      setError("");
-      setEmail("");
-      setName("");
-      setText("");
-      setDescription("");
-    }
+
+    alert("Email Sent");
+    setError("");
+    setEmail("");
+    setName("");
+    setText("");
+    setDescription("");
   };
 
   return (
