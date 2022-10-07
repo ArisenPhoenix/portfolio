@@ -1,0 +1,45 @@
+.form {
+  padding: 2%;
+}
+.label {
+  color: white;
+}
+
+.formInside {
+  display: inline-block !important;
+}
+
+.labelGroup {
+  display: inline;
+}
+
+.color {
+  background-color: rgba(0, 247, 255, 0.13);
+  color: white;
+  border-color: aliceblue !important;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 8px;
+}
+
+.textarea {
+  width: 100%;
+  height: 60vh;
+}
+
+.col,
+.gridder {
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-bottom: 5% !important;
+}
+
+.buttonDiv {
+  width: 100%;
+  text-align: center;
+}
+
+.button {
+  width: 20%;
+  text-align: center;
+}

@@ -1,0 +1,26 @@
+.todoTable {
+  width: 100%;
+}
+
+.table {
+  color: white;
+  background-color: inherit;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.num {
+  width: 10%;
+}
+
+.item {
+  width: 45%;
+}
+
+.time {
+  width: 30%;
+}
+
+.format {
+  width: 10%;
+}

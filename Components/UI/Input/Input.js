@@ -1,11 +1,17 @@
 import css from "./Input.module.css";
 
 const Input = (props) => {
-  const classes = `${css.input} ${props.className}`;
+  const classes = `${css.input} ${props.className ? props.className : null}`;
   return (
-    <input placeholder={props.placeholder} className={classes}>
-      {props.text}
-    </input>
+    <input
+      onChange={props.onChange}
+      placeholder={props.placeholder}
+      className={classes}
+      value={props.value}
+      name={props.name}
+      type={props.type ? props.type : "text"}
+      required={props.required}
+    />
   );
 };
 

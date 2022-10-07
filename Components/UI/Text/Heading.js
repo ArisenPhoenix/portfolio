@@ -1,7 +1,8 @@
 import css from "./Text.module.css";
 
 const Heading = (props) => {
-  return <h2 className={css.heading}>{props.text}</h2>;
+  const classes = `${css.heading} ${props.className}`;
+  return <h2 className={classes}>{props.text}</h2>;
 };
 
 export default Heading;

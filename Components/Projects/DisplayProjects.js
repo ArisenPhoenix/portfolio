@@ -1,12 +1,9 @@
 import css from "./DisplayProjects.module.css";
-import { useContext } from "react";
-import ProjectContext from "../../store/PROJECT_CONTEXT/project_context";
-import Project from "./Project.js/Project";
-import { Col, Row } from "react-bootstrap";
+import Project from "./Project/Project";
+import { Col } from "react-bootstrap";
 
 const DisplayProjects = (props) => {
-  const projCtx = useContext(ProjectContext);
-  const projects = projCtx.projectList;
+  const projects = props.projects;
   return projects.map((project, index) => {
     return (
       <Col

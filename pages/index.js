@@ -1,5 +1,5 @@
 import css from "./Landing.module.css";
-import Card from "../Components/UI/Card/Card";
+import Frosty from "../Components/UI/FrostedGlassDiv/Frosty";
 
 const Landing = () => {
   return (
@@ -8,7 +8,7 @@ const Landing = () => {
         <h1>Landing</h1>
       </div>
       <div>
-        <Card />
+        <Frosty />
       </div>
     </>
   );

@@ -1,15 +1,18 @@
-import TextBox from "../../UI/Text/TextBox";
 import BootStrapGridder from "../../UI/BootStrap/BootStrapGridder";
 import css from "./DisplayBlogs.module.css";
 import { Col } from "react-bootstrap";
 import Button from "../../UI/Button/Button";
 import BlogCard from "../BlogCard/BlogCard";
 import { useRouter } from "next/router";
+import STORE, { BlogSliceActions } from "../../../store/Redux/Store";
+const { addNew } = BlogSliceActions;
+// import { useSelector, useDispatch } from "react-redux";
 
 const DisplayBlogs = (props) => {
+  // const dispatch = useDispatch();u7
   const router = useRouter();
   const handleClick = () => {
-    router.push("/blog/new");
+    router.push(addNew().type);
   };
   return (
     <>

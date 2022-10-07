@@ -1,0 +1,19 @@
+.text {
+  color: white;
+}
+
+.frosty {
+  background-color: rgba(202, 120, 240, 0.262);
+}
+
+.button {
+  margin-top: 20px;
+  text-align: center;
+  width: 50px !important;
+  height: 30px !important;
+}
+
+.buttonDiv {
+  width: 100%;
+  text-align: right;
+}

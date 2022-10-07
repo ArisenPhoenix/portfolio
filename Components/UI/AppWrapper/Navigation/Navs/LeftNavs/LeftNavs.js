@@ -1,15 +1,17 @@
 import { useRouter } from "next/router";
 import LeftNav from "./LeftNav/LeftNav";
-import { LINKIFY } from "../../../../../../Helpers/Nav/Text/Linkify";
 
 const NavItems = (props) => {
   const router = useRouter();
+  const items = Object.keys(props.items);
+  const itemsObj = props.items;
   return (
     <>
-      {props.items.map((text) => {
-        const link = LINKIFY(text);
-        const active = link === router.pathname ? true : false;
-        return <LeftNav key={text} text={text} link={link} active={active} />;
+      {items.map((item) => {
+        const Text = itemsObj[item].name;
+        const Link = itemsObj[item].link;
+        const active = Link === router.pathname ? true : false;
+        return <LeftNav key={item} text={Text} link={Link} active={active} />;
       })}
     </>
   );

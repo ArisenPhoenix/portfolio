@@ -27,6 +27,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
@@ -34,3 +35,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# misc
+media/Phoenix/FlyingPhoenix/author
+media/Phoenix/SpreadPhoenix/author
+media/Phoenix/PhoenixVector/author

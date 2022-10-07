@@ -1,0 +1,78 @@
+.main {
+  width: 80%;
+  margin: auto;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 0.2rem;
+  border-color: rgb(183, 18, 95);
+  margin-top: 50px;
+}
+
+.headingRow {
+  width: 50%;
+  text-align: center;
+}
+
+.heading {
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.table {
+  color: white;
+  width: 100%;
+  height: inherit;
+  margin: auto;
+  table-layout: fixed;
+}
+
+.row1,
+.row2 {
+  width: 50%;
+  margin: auto;
+  text-align: left;
+}
+
+.row1 {
+  background-color: rgb(99, 99, 99);
+}
+
+.row2 {
+  background-color: rgb(48, 10, 126);
+}
+
+.cat {
+  width: 26%;
+  text-align: left;
+}
+
+.info {
+  width: 45%;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.cat,
+.info {
+  padding: 0.2% 2% 0.2% 2%;
+}
+
+.info::-webkit-scrollbar {
+  height: 5px;
+}
+
+@media screen and (max-width: 600) {
+  .info::-webkit-scrollbar,
+  .row1::-webkit-scrollbar,
+  .row2::-webkit-scrollbar {
+    display: none;
+  }
+
+  .main {
+    width: 100%;
+    padding: 0;
+    border-radius: 0;
+    border-style: none;
+  }
+}

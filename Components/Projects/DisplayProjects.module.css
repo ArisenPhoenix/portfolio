@@ -1,3 +1,4 @@
 .col {
   margin-bottom: 10%;
+  display: table-cell !important;
 }

@@ -1,5 +1,12 @@
 .blogPage {
   color: white;
+  text-align: left;
+  justify-content: left;
+  align-items: left;
+  background-image: url("../../media/tree.jpg");
+  background-attachment: scroll;
+  background-position: center;
+  /* background-repeat: no-repeat; */
 }
 
 .color {

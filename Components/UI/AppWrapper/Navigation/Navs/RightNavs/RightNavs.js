@@ -1,20 +1,23 @@
 import css from "./RightNavs.module.css";
 import { useRouter } from "next/router";
-import { LINKIFY } from "../../../../../../Helpers/Nav/Text/Linkify";
 import RightNav from "./RightNav/RightNav";
 
 const RightNavs = (props) => {
   const router = useRouter();
+  const items = Object.keys(props.items);
+  const itemsObj = props.items;
   return (
     <div className={`${css.hidden} ${props.className}`} onClick={props.onClick}>
-      {props.items.map((text) => {
-        const link = LINKIFY(text);
-        const active = link === router.pathname ? true : false;
+      {items.map((item) => {
+        const Text = itemsObj[item].name;
+        const Link = itemsObj[item].link;
+        const active = Link === router.pathname ? true : false;
+
         return (
           <RightNav
-            key={text}
-            text={text}
-            link={link}
+            key={item}
+            text={Text}
+            link={Link}
             active={active}
             display={props.display}
           />

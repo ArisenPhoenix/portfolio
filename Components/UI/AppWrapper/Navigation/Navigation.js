@@ -6,14 +6,15 @@ import DropDownContainer from "./DropDown/DropDownContainer/DropDownContainer";
 import DropDownButton from "./DropDown/Button/DropDownButton";
 import RightNavs from "./Navs/RightNavs/RightNavs";
 import { useState, useContext, useEffect } from "react";
-import { NavContext } from "../../../../store/NAV_CONTEXT/nav_context";
+import { NavContext } from "../../../../store/Context/NAV_CONTEXT/nav_context";
 import OutsideAlerter from "../../../../Hooks/useAlertClickOut";
 import useWindowSize from "../../../../Hooks/useWindowSize";
+import { useSelector } from "react-redux";
 
 const Navigation = (props) => {
+  const NAV = useSelector((state) => state.NAV);
+  const { rightNavs, leftNavs } = NAV;
   const navCtx = useContext(NavContext);
-  const leftNavs = navCtx.leftNavs;
-  const rightNavItems = navCtx.rightNavs;
   const dropDownItems = navCtx.dropDowns;
   const [displayDropDown, setDisplayDropDown] = useState(false);
   const leftClasses = `${css.leftTopNav} ${props.className}`;
@@ -67,7 +68,7 @@ const Navigation = (props) => {
                     </div>
 
                     <RightNavs
-                      items={rightNavItems}
+                      items={rightNavs}
                       className={displayDropDown}
                       onClick={handleRightItemClick}
                     />
