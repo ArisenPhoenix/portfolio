@@ -11,6 +11,7 @@ const MessageBox = (props) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -38,8 +39,16 @@ const MessageBox = (props) => {
         alert("Send Mail To You");
         console.log(res);
       })
-      .catch((err) => console.log(err));
-    console.log("REQUEST RESPONSE: ", response);
+      .catch((err) => {
+        return console.log(err);
+      });
+    if (response.message) {
+      setError("");
+      setEmail("");
+      setName("");
+      setText("");
+      setDescription("");
+    }
   };
 
   return (
