@@ -7,7 +7,10 @@ const BootstrapGridder = (props) => {
   }
 
   return (
-    <Container fluid={props.fluid ? props.fluid : null}>
+    <Container
+      fluid={props.fluid ? props.fluid : null}
+      className={props.className}
+    >
       <Row className={`${props.rowClass ? props.rowClass : null}`}>
         {props.children}
       </Row>

@@ -2,7 +2,7 @@ import { SMTPClient } from "emailjs";
 
 const SEND_ME_EMAIL_HANDLER = async (req, res) => {
   const data = req.body;
-  // console.log("DATA: ", data);
+  console.log("DATA: ", data);
   try {
     const client = new SMTPClient({
       user: process.env.BUSINESS_EMAIL,

@@ -1,27 +1,20 @@
-import { Blogs } from "../../DummyData/Blogs";
 import Blog from "../../Components/Blog/Blog";
 import css from "./Blog.module.css";
-import Frosty from "../../Components/UI/FrostedGlassDiv/Frosty";
-import tree from "../../media/tree.jpg";
-import sephiroth from "../../media/sephiroth_fire.jpg";
-import { useSelector } from "react-redux";
+import { useSelect, useClass } from "../../Mercury/hooks/usehooks";
 
-const BlogPage = (props) => {
-  const { blogs } = useSelector((state) => state.BLOGS);
+const BlogPage = () => {
+  const { THEME, BLOGS } = useSelect();
+  const { blogs } = BLOGS;
+  const { theme } = THEME;
+  const { bg, bgGlass, text, textGlass } = theme;
+  const classes = useClass([css.blogPage]);
+
   return (
-    <div className={css.blogPage}>
+    <div className={classes}>
       <h1>BlogPage</h1>
-      <Blog blogs={blogs} />
+      <Blog blogs={blogs} className={theme} />
     </div>
   );
 };
 
 export default BlogPage;
-
-// export const getServerSideProps = (context) => {
-//   return {
-//     props: {
-//       blogs: Blogs(),
-//     },
-//   };
-// };

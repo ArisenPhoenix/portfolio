@@ -1,26 +1,15 @@
-import css from "./Stack.module.css";
+import Table from "../../../UI/Table/Table";
+import { useSelect, useClass } from "../../../../Mercury/hooks/usehooks";
 
 const Stack = (props) => {
+  const { styles } = useSelect("THEME");
+  const { DIVS, GENERAL } = styles;
+  const { inheritBorderRadius } = GENERAL;
+  const centered = DIVS.centerAll;
   const stack = props.stack;
-
-  return (
-    <table className={css.table}>
-      <tbody>
-        {stack.map((item, index) => {
-          if (index % 2 === 0) {
-            const item1 = stack[index];
-            const item2 = stack[index + 1];
-            return (
-              <tr key={`Row| ${index} ${item1} & ${item2}`}>
-                <td>{item1}</td>
-                <td>{item2}</td>
-              </tr>
-            );
-          }
-        })}
-      </tbody>
-    </table>
-  );
+  const data = [stack];
+  const classes = useClass([centered, inheritBorderRadius]);
+  return <Table rowData={data} tdClass={classes} />;
 };
 
 export default Stack;

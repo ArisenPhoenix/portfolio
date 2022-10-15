@@ -8,18 +8,21 @@ import AppWrapper from "../Components/UI/AppWrapper/AppWrapper";
 import { SSRProvider, ThemeProvider } from "react-bootstrap";
 import { Provider } from "react-redux";
 import STORE from "../store/Redux/Store";
+import Admin_Context_Provider from "../store/Context/ADMIN_CONTEXT/admin_context.js";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Provider store={STORE}>
-      <SSRProvider>
-        <ThemeProvider className={css.themeProvider}>
-          <AppWrapper>
-            <Component {...pageProps} />
-          </AppWrapper>
-        </ThemeProvider>
-      </SSRProvider>
-    </Provider>
+    <Admin_Context_Provider>
+      <Provider store={STORE}>
+        <SSRProvider>
+          <ThemeProvider className={css.themeProvider}>
+            <AppWrapper>
+              <Component {...pageProps} />
+            </AppWrapper>
+          </ThemeProvider>
+        </SSRProvider>
+      </Provider>
+    </Admin_Context_Provider>
   );
 }
 

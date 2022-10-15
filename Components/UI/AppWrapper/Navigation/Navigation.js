@@ -4,35 +4,63 @@ import NavBrandImage from "./BrandItem/BrandItem";
 import mercury from "../../../../media/mercury.jpg";
 import DropDownContainer from "./DropDown/DropDownContainer/DropDownContainer";
 import DropDownButton from "./DropDown/Button/DropDownButton";
-import RightNavs from "./Navs/RightNavs/RightNavs";
-import { useState, useContext, useEffect } from "react";
+import LeftNav from "./Navs/LeftNavs/LeftNav/LeftNav";
+import { useRouter } from "next/router";
+import { useState, useContext } from "react";
 import { NavContext } from "../../../../store/Context/NAV_CONTEXT/nav_context";
 import OutsideAlerter from "../../../../Hooks/useAlertClickOut";
-import useWindowSize from "../../../../Hooks/useWindowSize";
-import { useSelector } from "react-redux";
+import {
+  useClass,
+  useSelect,
+  useWindow,
+} from "../../../../Mercury/hooks/usehooks";
+import { LINKIFY } from "../../../../Helpers/Nav/Text/Linkify";
+import DE_LINKIFY from "../../../../Helpers/Nav/Text/DeLinkify";
 
 const Navigation = (props) => {
-  const NAV = useSelector((state) => state.NAV);
-  const { rightNavs, leftNavs } = NAV;
+  const router = useRouter();
+  const page = router.pathname;
   const navCtx = useContext(NavContext);
+  const { width, height } = useWindow();
+  const { NAV, THEME } = useSelect();
+
+  const { theme, styles } = THEME;
+  const { bg, text } = theme;
+  const { rightNavs, leftNavs } = NAV;
+
+  const { NAVIGATION } = styles;
+  const { navigationHeight, navigationMargin } = NAVIGATION;
+
+  const navigationClasses = useClass([navigationHeight, navigationMargin]);
+
   const dropDownItems = navCtx.dropDowns;
   const [displayDropDown, setDisplayDropDown] = useState(false);
-  const leftClasses = `${css.leftTopNav} ${props.className}`;
-  const rightClasses = `${css.rightTopNav} ${props.className}`;
-  const [getWindow, setGetWindow] = useState(true);
-  const { width, height } = useWindowSize(getWindow);
+  const [currentPage, setCurrentPage] = useState({
+    item: DE_LINKIFY(page, null, "SET CURRENT PATH"),
+    link: page,
+  });
+
+  const currentTheme = useClass([bg, text]);
+  const leftClasses = useClass([css.leftTopNav, currentTheme]);
+  const rightClasses = useClass([css.rightTopNav, currentTheme]);
+  const mainClass = useClass([props.className, currentTheme]);
+
+  const WIDTH = Number(width);
+
+  const showNavs = WIDTH < 615 ? false : true;
 
   const mobileNavItem = (item) => {
-    if (width <= 600) {
+    if (WIDTH <= 615) {
       navCtx.updateLeftNavs(item);
+      const data = {
+        item: item,
+        link: LINKIFY(item, null, "MOBILE NAV ITEM"),
+      };
+      setCurrentPage(data);
     } else {
       navCtx.leftNavsDefault();
     }
   };
-
-  useEffect(() => {
-    setGetWindow((prev) => !prev);
-  }, [displayDropDown]);
 
   const handleClick = () => {
     if (displayDropDown === false) {
@@ -43,43 +71,52 @@ const Navigation = (props) => {
     });
   };
 
-  const handleRightItemClick = () => {
-    navCtx.leftNavsDefault();
-  };
-
   return (
-    <>
+    <div className={navigationClasses}>
       <OutsideAlerter setToFalse={setDisplayDropDown}>
-        <div className={css.wrapper}>
-          <div className={`${css.main} ${props.className}`}>
-            <div className={css.container}>
-              <div className={leftClasses}>
-                <NavBrandImage src={mercury} alt="mercury.jpg" href="/" />
-                <div>
-                  <LeftNavs items={leftNavs} />
-                  <div>
-                    <div className={rightClasses}>
-                      <DropDownButton
-                        src={mercury}
-                        onClick={handleClick}
-                        className="dropDownButton"
-                        show={displayDropDown}
-                      />
-                    </div>
+        <div className={mainClass}>
+          <NavBrandImage src={mercury} alt="mercury.jpg" href="/" />
 
-                    <RightNavs
-                      items={rightNavs}
-                      className={displayDropDown}
-                      onClick={handleRightItemClick}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className={leftClasses}>
+            <LeftNavs
+              items={leftNavs}
+              left={true}
+              show={showNavs}
+              updateTop={mobileNavItem}
+            />
+
+            <DropDownButton
+              src={mercury}
+              onClick={handleClick}
+              show={displayDropDown}
+            />
+
+            {showNavs === false && (
+              <LeftNav
+                link={currentPage.link}
+                text={currentPage.item}
+                active={true}
+                updateTop={() => {}}
+              />
+            )}
+
+            <LeftNavs
+              updateTop={mobileNavItem}
+              items={rightNavs}
+              className={rightClasses}
+              left={false}
+              show={showNavs}
+            />
           </div>
-          <div className={`${css.rightClasses} ${css.dropDownContainer}`}>
+          <div
+            className={useClass([
+              css.rightClasses,
+              css.dropDownContainer,
+              currentTheme,
+            ])}
+          >
             <DropDownContainer
-              rightItems={dropDownItems}
+              items={dropDownItems}
               show={displayDropDown}
               onClick={handleClick}
               updateTop={mobileNavItem}
@@ -87,7 +124,7 @@ const Navigation = (props) => {
           </div>
         </div>
       </OutsideAlerter>
-    </>
+    </div>
   );
 };
 

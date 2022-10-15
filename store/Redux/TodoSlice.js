@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialCurrent = { item: "", time: "", time2: "" };
-
 const initialState = {
   todos: [],
   current: { ...initialCurrent },

@@ -2,19 +2,28 @@ import css from "./projects.module.css";
 import { ProjectContextProvider } from "../../store/Context/PROJECT_CONTEXT/project_context";
 import DisplayProjects from "../../Components/Projects/DisplayProjects";
 import BootStrapGridder from "../../Components/UI/BootStrap/BootStrapGridder";
-import Frosty from "../../Components/UI/FrostedGlassDiv/Frosty";
-import { useSelector } from "react-redux";
+import { useSelect, useClass, useWindow } from "../../Mercury/hooks/usehooks";
 
 const Projects = () => {
-  const projects = useSelector((state) => state.PROJECTS);
+  const { width, height } = useWindow();
+  const WIDTH = Number(width);
+
+  const { PROJECTS, THEME } = useSelect();
+  const { theme, styles } = THEME;
+  const { bg, text } = theme;
+  const { SPACING } = styles;
+  const { mdPX, xxlgPY, xxxlgPY, xxxxlgPY } = SPACING;
+  const rowClass = useClass([css.row, "gx-5"]);
+
+  const classes = useClass([bg, text, mdPX, xxlgPY]);
   return (
-    <Frosty className={css.main}>
+    <div className={classes}>
       <ProjectContextProvider>
-        <BootStrapGridder fluid={true} rowClass={`${css.row} gx-25`}>
-          <DisplayProjects projects={projects} />
+        <BootStrapGridder fluid={true} rowClass={rowClass}>
+          <DisplayProjects projects={PROJECTS} />
         </BootStrapGridder>
       </ProjectContextProvider>
-    </Frosty>
+    </div>
   );
 };
 

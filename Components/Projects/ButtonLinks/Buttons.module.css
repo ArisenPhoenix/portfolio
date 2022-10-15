@@ -1,15 +1,13 @@
 .gitHub {
   background-color: black;
-  float: right;
 }
 
 .webSite {
   background-color: black;
-  float: left;
 }
 
 .gitHub:hover {
-  background-color: rgba(0, 0, 0, 0.218) !important;
+  background-color: rgba(170, 35, 35, 0.218) !important;
 }
 
 .webSite:hover {

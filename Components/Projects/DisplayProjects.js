@@ -1,9 +1,14 @@
 import css from "./DisplayProjects.module.css";
 import Project from "./Project/Project";
 import { Col } from "react-bootstrap";
+import { useClass, useSelect } from "../../Mercury/hooks/usehooks";
 
 const DisplayProjects = (props) => {
+  const { theme, styles } = useSelect("THEME");
+  const { GENERAL } = styles;
+  const { wrapSpaceBelow } = GENERAL;
   const projects = props.projects;
+  const classes = useClass([css.col, "px-10"]);
   return projects.map((project, index) => {
     return (
       <Col
@@ -13,7 +18,7 @@ const DisplayProjects = (props) => {
         xl="4"
         xxl="3"
         key={`Project| ${index}: ${project.name} `}
-        className={`${css.col} px-10`}
+        className={classes}
       >
         <Project key={project.name} project={project} />
       </Col>

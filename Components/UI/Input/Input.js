@@ -1,7 +1,11 @@
-import css from "./Input.module.css";
+import { useSelect, useClass } from "../../../Mercury/hooks/usehooks";
 
 const Input = (props) => {
-  const classes = `${css.input} ${props.className ? props.className : null}`;
+  // console.log("INPUT PROPS: ", props);
+  const { theme, styles } = useSelect("THEME");
+  const { text, bg } = theme;
+  const classes = useClass([bg, text, props.className]);
+
   return (
     <input
       onChange={props.onChange}
@@ -10,7 +14,7 @@ const Input = (props) => {
       value={props.value}
       name={props.name}
       type={props.type ? props.type : "text"}
-      required={props.required}
+      required={props.required ? props.required : undefined}
     />
   );
 };

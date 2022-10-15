@@ -1,5 +1,4 @@
 .flipCard {
-  /* position: absolute; */
   width: 100%;
   height: 200px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
@@ -32,12 +31,6 @@
   backface-visibility: hidden;
 }
 
-/* Style the front side (fallback if image is missing) */
-.frontSide,
-.backSide {
-  color: rgb(170, 170, 170);
-}
-
 .backSide {
   transform: rotateY(180deg);
 }
@@ -46,12 +39,8 @@
   padding: 5px;
   width: 100%;
   height: 100%;
-  box-shadow: inset 0 0 25px 5px rgba(238, 227, 27, 0.164);
-  border-radius: 10px;
-  border-style: inset;
   transition-property: inset;
   position: absolute;
-  background-color: rgba(110, 3, 3, 0.241) !important;
   border-color: transparent !important;
 }
 

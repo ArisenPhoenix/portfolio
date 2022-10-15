@@ -1,4 +1,8 @@
-export const LINKIFY = (text, directory) => {
+export const LINKIFY = (text, directory, placeCalledFrom = null) => {
+  // console.log("LINKIFY STARTING TEXT: ", text);
+  // if (placeCalledFrom) {
+  //   console.log("CALLED FROM: ", placeCalledFrom);
+  // }
   let final;
   if (directory) {
     final = `/${directory}/`;

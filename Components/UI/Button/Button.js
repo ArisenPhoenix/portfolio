@@ -1,10 +1,16 @@
-import css from "./Button.module.css";
+import { useSelect, useClass } from "../../../Mercury/hooks/usehooks";
 
 const Button = (props) => {
-  const classes = `${css.button} ${props.className}`;
+  const { theme, styles } = useSelect("THEME");
+  const { bg, text } = theme;
+  const { BUTTON } = styles;
+  const { buttonForm } = BUTTON;
+  const buttonClasses = useClass([bg, text, buttonForm, props.buttonClass]);
+  const divClasses = useClass([bg, text, props.divClass]);
+
   return (
-    <div className={props.divClass}>
-      <button onClick={props.onClick} className={classes}>
+    <div className={divClasses}>
+      <button onClick={props.onClick} className={buttonClasses}>
         {props.text}
       </button>
     </div>

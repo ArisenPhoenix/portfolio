@@ -2,13 +2,12 @@ import { useState, createContext } from "react";
 import project_list from "../../StoreData/projectData";
 
 const ProjectContext = createContext({
-  projectList: ["", ""],
+  projectList: [{}],
 });
 
 export const ProjectContextProvider = (props) => {
-  const [projectList, setProjectList] = useState(project_list);
   const projectValue = {
-    projectList: projectList,
+    projectList: project_list,
   };
 
   return (

@@ -1,20 +1,20 @@
 .main {
-  position: sticky;
   width: 100%;
-  background-color: black;
   padding: 0;
   margin: 0;
-  top: 0;
-  left: 0;
-  right: 0;
   z-index: 20;
+  margin-bottom: 20px;
+}
+
+.canvasMargin {
+  margin-top: 20px;
 }
 
 .dropDownContainer {
   display: sticky;
   position: relative;
   margin-top: -55px;
-  z-index: 20;
+  z-index: 99;
 }
 
 .container {
@@ -28,24 +28,22 @@
 
 .wrapper {
   position: relative;
-  margin-bottom: 80px;
 }
 
 .leftTopNav,
 .rightTopNav {
-  background-color: rgb(0, 0, 0);
   overflow: hidden;
 }
 
 .leftTopNav a,
 .rightTopNav a {
   display: block;
-  color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
+
 /* Style the links inside the navigation bar */
 .leftTopNav a {
   float: left;

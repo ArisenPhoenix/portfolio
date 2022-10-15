@@ -1,26 +1,19 @@
 .controls {
-  background-color: inherit;
+  background-color: transparent;
   color: inherit;
-  font-weight: bolder;
-}
-
-/* .controls:hover {
-  background-color: rgba(200, 90, 240, 0.483);
-  color: rgb(0, 0, 0);
-} */
-
-.controls:hover {
-  color: white;
+  font-weight: bold;
 }
 
 .active {
-  background-color: rgba(251, 251, 251, 0.831);
-  color: black !important;
+  background-color: black;
+  box-shadow: 0 0 8px 8px gold, inset 0 0 4px 4px silver;
+  color: white;
   font-weight: bolder;
 }
 
 .active:hover,
 .controls:hover {
-  color: rgb(255, 34, 0) !important;
-  background-color: rgba(20, 20, 206, 0.776);
+  background-color: silver;
+  color: black !important;
+  box-shadow: 0 0 8px 8px gold;
 }

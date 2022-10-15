@@ -1,11 +1,20 @@
-import css from "./SocialMediaButton.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useClass, useSelect } from "../../../Mercury/hooks/usehooks";
+
 const SocialMediaButton = (props) => {
-  const classes = `btn ${props.className} ${css.sizing}`;
+  const { GENERAL, BORDERS } = useSelect("THEME").styles;
+  const { centerAll } = GENERAL;
+  const { medium, silver, largeRound, solid } = BORDERS;
+  const newClass = useClass([medium, silver, largeRound, solid]);
   return (
-    <a href={props.href} type="button" className={classes}>
-      <FontAwesomeIcon className={`${css.sm}`} icon={props.icon} />
-    </a>
+    <div>
+      <a href={props.href} type="button">
+        <FontAwesomeIcon
+          className={`${centerAll} ${newClass}`}
+          icon={props.icon}
+        />
+      </a>
+    </div>
   );
 };
 

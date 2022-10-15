@@ -4,6 +4,7 @@ import BlogSlice from "./BlogSlice";
 import TodoSlice from "./TodoSlice";
 import ProjectSlice from "./ProjectSlice";
 import ContactSlice from "./ContactSlice";
+import ThemeProviderSlice from "./ThemeSlice/ThemeProviderSlice";
 
 const STORE = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const STORE = configureStore({
     NAV: NavSlice.reducer,
     PROJECTS: ProjectSlice.reducer,
     CONTACTS: ContactSlice.reducer,
+    THEME: ThemeProviderSlice.reducer,
   },
 });
 
@@ -22,3 +24,4 @@ export const BlogSliceActions = BlogSlice.actions;
 export const NavSliceActions = NavSlice.actions;
 export const ContactSliceActions = ContactSlice.actions;
 export const ProjectSliceActions = ProjectSlice.actions;
+export const ThemeProviderActions = ThemeProviderSlice.actions;

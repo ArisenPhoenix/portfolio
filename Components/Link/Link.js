@@ -1,18 +1,23 @@
 import Link from "next/link";
-import React from "react";
 import css from "./Link.module.css";
 import { LINKIFY } from "../../Helpers/Nav/Text/Linkify";
+import { useClass } from "../../Mercury/hooks/usehooks";
+import { useRouter } from "next/router";
 
 const Link_ = (props) => {
+  const router = useRouter();
   const link = props.href ? props.href : LINKIFY(props.text);
-
-  let defaultClasses = `${css.controls}`;
-
-  const classes = props.active ? `${css.active}` : defaultClasses;
+  const active = props.active ? css.active : undefined;
+  const classes = useClass([props.className, css.controls]);
+  const handleClick = () => {
+    props.onClick(props.text);
+  };
   return (
-    <Link href={link}>
-      <a className={classes}>{props.text}</a>
-    </Link>
+    <span className={classes} onClick={handleClick}>
+      <Link href={link}>
+        <a className={active}>{props.text}</a>
+      </Link>
+    </span>
   );
 };
 

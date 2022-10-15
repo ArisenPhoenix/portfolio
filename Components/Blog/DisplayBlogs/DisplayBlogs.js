@@ -4,24 +4,35 @@ import { Col } from "react-bootstrap";
 import Button from "../../UI/Button/Button";
 import BlogCard from "../BlogCard/BlogCard";
 import { useRouter } from "next/router";
-import STORE, { BlogSliceActions } from "../../../store/Redux/Store";
+import { BlogSliceActions } from "../../../store/Redux/Store";
+import { useContext } from "react";
+import { AdminContext } from "../../../store/Context/ADMIN_CONTEXT/admin_context";
 const { addNew } = BlogSliceActions;
-// import { useSelector, useDispatch } from "react-redux";
+import { useSelect, useClass } from "../../../Mercury/hooks/usehooks";
 
 const DisplayBlogs = (props) => {
-  // const dispatch = useDispatch();u7
+  const { theme, styles } = useSelect("THEME");
+  const { bgGlass, textGlass } = theme;
+  const { GENERAL } = styles;
+  const { transparent } = GENERAL;
+  const blogClass = useClass([transparent, bgGlass, textGlass]);
+  const blogContainerClass = useClass([transparent]);
+  const adminCtx = useContext(AdminContext);
+  const admin = adminCtx.admin;
   const router = useRouter();
   const handleClick = () => {
     router.push(addNew().type);
   };
   return (
-    <>
-      <Button
-        text="New"
-        className={css.button}
-        divClass={css.buttonDiv}
-        onClick={handleClick}
-      />
+    <div className={blogContainerClass}>
+      {admin && (
+        <Button
+          text="New"
+          className={css.button}
+          divClass={css.buttonDiv}
+          onClick={handleClick}
+        />
+      )}
       <BootStrapGridder fluid="true">
         {props.blogs.map((blog, index) => {
           return (
@@ -35,7 +46,7 @@ const DisplayBlogs = (props) => {
           );
         })}
       </BootStrapGridder>
-    </>
+    </div>
   );
 };
 

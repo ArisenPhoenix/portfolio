@@ -1,18 +1,22 @@
-import css from "./DisplayImages.module.css";
 import { Carousel } from "react-bootstrap";
-import Image from "next/image";
+import NextImage from "../../../UI/NextImage/NextImage";
+import { useSelect, useClass } from "../../../../Mercury/hooks/usehooks";
 
 const DisplayImages = (props) => {
+  const { theme, styles } = useSelect("THEME");
+  const { bg, text } = theme;
+  const { DIVS, BORDERS, GENERAL } = styles;
+  const carouselClass = useClass([bg, text]);
   const images = props.images;
   return (
     <>
       {images && images.length > 0 && (
-        <Carousel className={css.carousel} variant="dark">
+        <Carousel className={carouselClass}>
           {images?.map((image, index) => {
             const thisImage = image?.default?.src;
-            return image?.default.src ? (
-              <Carousel.Item key={`image ${index}`}>
-                <Image
+            return image?.default?.src ? (
+              <Carousel.Item key={`image ${index}`} className={carouselClass}>
+                <NextImage
                   key={`Image| ${index}`}
                   layout="intrinsic"
                   src={thisImage}

@@ -1,18 +1,22 @@
 import css from "./ContactPage.module.css";
-import Frosty from "../UI/FrostedGlassDiv/Frosty";
 import MessageBox from "./MessageBox/MessageBox";
 import ContactInfo from "./ContactInfo/ContactInfo";
-import Heading from "../UI/Text/Heading";
+import { useSelect, useClass } from "../../Mercury/hooks/usehooks";
 
-const ContactPage = (props) => {
+const ContactPage = () => {
+  const { THEME, CONTACTS } = useSelect(false);
+  const { theme, styles } = THEME;
+  const { NAVIGATION } = styles;
+  const { canvasMargin } = NAVIGATION;
+  const mainClass = useClass([css.main, canvasMargin]);
+
   return (
-    <div className={css.main}>
-      <ContactInfo info={props.info} />
-      <Frosty className={css.textBoxContainer}>
-        <Heading text="Email Me" className={css.heading} />
-        <MessageBox />
-      </Frosty>
-    </div>
+    <main className={mainClass}>
+      <ContactInfo info={CONTACTS} />
+      <div>
+        <MessageBox theme={theme} />
+      </div>
+    </main>
   );
 };
 

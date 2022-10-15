@@ -1,0 +1,33 @@
+.pink {
+  background-color: pink;
+  color: black;
+}
+
+.red {
+  background-color: red;
+  color: black;
+}
+
+.green {
+  background-color: green;
+  color: red;
+}
+
+.purple {
+  background-color: purple;
+  color: yellow;
+}
+
+.orange {
+  background-color: orange;
+  color: blue;
+}
+
+.orangeRed {
+  background-color: orangered;
+  color: seagreen;
+}
+
+.blackText {
+  color: black !important;
+}

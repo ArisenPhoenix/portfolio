@@ -1,13 +1,12 @@
 import Frosty from "../../Components/UI/FrostedGlassDiv/Frosty";
 import css from "./todo.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import STORE, { TodoSliceActions } from "../../store/Redux/Store";
+import { TodoSliceActions } from "../../store/Redux/Store";
 import Todo from "../../Components/Todo/Todo";
 import Input from "../../Components/UI/Input/Input";
 import Button from "../../Components/UI/Button/Button";
 import BootStrapGridder from "../../Components/UI/BootStrap/BootStrapGridder";
 import { Col } from "react-bootstrap";
-
 const { resetCurrent, addItem, handleChange } = TodoSliceActions;
 
 const TodoList = () => {

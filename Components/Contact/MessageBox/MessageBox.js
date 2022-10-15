@@ -1,17 +1,24 @@
-import TextArea from "../../UI/Text/TextArea";
-import css from "./MessageBox.module.css";
-import Input from "../../UI/Input/Input";
 import { useState } from "react";
-import Button from "../../UI/Button/Button";
-import { useSelector } from "react-redux";
-import ax from "axios";
+import { useClass, useSelect } from "../../../Mercury/hooks/usehooks";
+import SEND_EMAIL from "../../../Helpers/API/SEND_EMAIL";
+import { useRouter } from "next/router";
+import MessageForm from "../../UI/MessageForm/MessageForm";
 
 const MessageBox = (props) => {
-  const [text, setText] = useState("");
+  const router = useRouter();
+  const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const { theme, styles } = useSelect("THEME");
+  const { bg, text } = theme;
+  const { DIVS, GENERAL } = styles;
+  const { stained } = DIVS;
+  const { noBorder, spaceAbove } = GENERAL;
+
+  const mainDivClasses = useClass([bg, text, stained, noBorder, spaceAbove]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -19,83 +26,93 @@ const MessageBox = (props) => {
     const value = e.target.value;
     name === "name" && setName(value);
     name === "description" && setDescription(value);
-    name === "message" && setText(value);
+    name === "message" && setMessage(value);
     name === "email" && setEmail(value);
   };
 
-  const handleClick = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSuccess("Sending Email...");
     const data = {
       name: name,
       subject: description,
-      message: text,
+      message: message,
       userEmail: email,
     };
-    console.log(data);
 
-    await ax
-      .post("/api/send_email", data)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        alert("Uh oh! There was a problem.");
-        return console.log(err);
-      });
+    const response = await SEND_EMAIL(data);
 
-    alert("Email Sent");
-    setError("");
-    setEmail("");
-    setName("");
-    setText("");
-    setDescription("");
+    if (response.response) {
+      setSuccess("Email Successfully Sent") &&
+        setEmail("") &&
+        setName("") &&
+        setMessage("") &&
+        setDescription("");
+    }
+
+    response.err && setSuccess("Uh-Oh A Phoenix Has Drowned!");
+
+    setTimeout(() => {
+      if (!response.err && response.response) {
+        router.push("/");
+      }
+      setSuccess("");
+    }, 3000);
+  };
+
+  const inputs = {
+    inputs: [
+      {
+        label: { text: "Name" },
+        input: {
+          text: "Name",
+          value: name,
+          required: true,
+          type: "text",
+          name: "name",
+        },
+      },
+      {
+        label: { text: "Email" },
+        input: {
+          text: "Your Email",
+          value: email,
+          required: true,
+          type: "email",
+          name: "email",
+        },
+      },
+      {
+        label: { text: "Subject" },
+        input: {
+          type: "text",
+          text: "Subject",
+          value: description,
+          name: "description",
+          required: true,
+          name: "description",
+        },
+      },
+    ],
+    cols: { xs: "12", md: "4", xl: "4" },
+
+    textArea: {
+      text: "Write Your Message To Me Here",
+      name: "message",
+      value: message,
+    },
   };
 
   return (
-    <>
-      <form className="btn" onSubmit={handleClick}>
-        <div className={css.inputGroup}>
-          <Input
-            onChange={handleChange}
-            text="Name"
-            className={css.sendersName}
-            value={name}
-            name="name"
-            placeholder="Name"
-            required={true}
-          />
-          <Input
-            onChange={handleChange}
-            text="Your Email"
-            className={css.sendersName}
-            value={email}
-            name="email"
-            placeholder="Your Email"
-            type="email"
-            required={true}
-          />
-          <Input
-            onChange={handleChange}
-            text="Description"
-            className={css.sendersDescription}
-            value={description}
-            name="description"
-            placeholder="Subject"
-            required={true}
-          />
-        </div>
-
-        <TextArea
-          onChange={handleChange}
-          className={css.frosty}
-          spellCheck={false}
-          value={text}
-          name="message"
-          required={true}
-        />
-        <Button text="Send" className={css.button} />
-      </form>
-    </>
+    <div className={mainDivClasses}>
+      <MessageForm
+        inputData={inputs}
+        onChange={handleChange}
+        handleSubmit={handleSubmit}
+        message={success}
+        defaultMessage="Email Me"
+      />
+    </div>
   );
 };
 

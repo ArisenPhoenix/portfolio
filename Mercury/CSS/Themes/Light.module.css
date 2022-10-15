@@ -1,0 +1,36 @@
+.bg {
+  background-color: white !important;
+}
+
+.text {
+  color: black !important;
+}
+
+.text p,
+.text h1,
+.text h2,
+.text h3,
+.text h4,
+.text h5,
+.text h6,
+.text a {
+  color: black;
+}
+
+.bg div {
+  background-color: white;
+}
+
+.bg input {
+  background-color: white;
+}
+
+.bg input ::placeholder {
+  color: black;
+  opacity: 1; /* Firefox */
+}
+
+.bg input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: black;
+}
