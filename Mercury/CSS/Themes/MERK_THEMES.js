@@ -23,6 +23,7 @@ import navigationStyles from "../Styles/Navigatioon/Navigation.module.css";
 
 // ANIMATIONS
 import flipStyles from "../Animations/Flip.module.css";
+import popStyles from "../Animations/pop.module.css";
 
 const THEMES = {
   DARK: dark,
@@ -46,7 +47,7 @@ const STYLES = {
   NAVIGATION: navigationStyles,
 };
 
-const ANIMATIONS = { FLIPCARD: flipStyles };
+const ANIMATIONS = { FLIPCARD: flipStyles, POP: popStyles };
 
 const MERK_THEMES = () => {
   return { STYLES, ANIMATIONS, THEMES };

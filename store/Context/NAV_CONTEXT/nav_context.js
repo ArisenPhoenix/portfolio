@@ -11,7 +11,7 @@ export const NavContext = createContext({
 });
 
 const Nav_Context_Provider = (props) => {
-  const leftNavItems = ["Projects", "About", "Contact"];
+  const leftNavItems = ["Projects", "Contact"];
   const rightNavItems = ["Blog", "Resume"];
   const dropDownItems = [...leftNavItems, ...rightNavItems];
   const [currentPage, setCurrentPage] = useState([]);

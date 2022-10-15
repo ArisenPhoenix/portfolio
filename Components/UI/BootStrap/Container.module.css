@@ -1,5 +1,4 @@
 .height {
-  /* display: inline-block; */
-  /* align-self: center; */
+  padding: 5px !important;
   min-height: 100vh !important;
 }

@@ -3,7 +3,6 @@ import Item from "./Item/Item";
 
 const DropDownContainer = (props) => {
   const classes = `${css.container}`;
-
   return (
     <div className={classes} onClick={props.onClick}>
       {props.show &&

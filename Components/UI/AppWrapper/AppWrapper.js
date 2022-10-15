@@ -5,7 +5,8 @@ import { useSelect, useClass } from "../../../Mercury/hooks/usehooks";
 import Canvas from "./Canvas/Canvas";
 
 const AppWrapper = (props) => {
-  const { styles } = useSelect("THEME");
+  const { styles, theme } = useSelect("THEME");
+  const { text, bg } = theme;
   const { NAVIGATION, BORDERS } = styles;
   const {
     footer,
@@ -20,11 +21,11 @@ const AppWrapper = (props) => {
 
   const wrapperClass = useClass([wrapperSpacing, roundgold]);
 
-  const canvasClass = useClass([canvasMargin, canvasSpacing]);
+  const canvasClass = useClass([]);
 
   const navigationClass = useClass([navigationHeight, navigationMargin]);
 
-  const footerClass = useClass([footer]);
+  const footerClass = useClass([footer, text, bg]);
 
   return (
     <div className={wrapperClass}>

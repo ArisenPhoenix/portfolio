@@ -26,14 +26,21 @@ const Navigation = (props) => {
 
   const { theme, styles } = THEME;
   const { bg, text } = theme;
-  const { rightNavs, leftNavs } = NAV;
+  const { rightNavs, leftNavs, dropDowns } = NAV;
+
+  // const dropDownItems = dropDowns.map((item) => item.name);
+
+  // console.log("RIGHT: ", rightNavs);
+  // console.log("LEFT: ", leftNavs);
+  // console.log("Drops: ", dropDowns);
+  // console.log("ITEMS: ", dropDownItems);
 
   const { NAVIGATION } = styles;
   const { navigationHeight, navigationMargin } = NAVIGATION;
 
   const navigationClasses = useClass([navigationHeight, navigationMargin]);
 
-  const dropDownItems = navCtx.dropDowns;
+  // const dropDownItems = navCtx.dropDowns;
   const [displayDropDown, setDisplayDropDown] = useState(false);
   const [currentPage, setCurrentPage] = useState({
     item: DE_LINKIFY(page, null, "SET CURRENT PATH"),
@@ -116,7 +123,7 @@ const Navigation = (props) => {
             ])}
           >
             <DropDownContainer
-              items={dropDownItems}
+              items={dropDowns}
               show={displayDropDown}
               onClick={handleClick}
               updateTop={mobileNavItem}

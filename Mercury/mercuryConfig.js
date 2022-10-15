@@ -1,15 +1,19 @@
-// import { SUPER_LINKIFY } from "../Helpers/Nav/General/importAll";
 import { SUPER_LINKIFY } from "../store/Redux/NavSlice/LINKIFY";
 import { NAV_DATA, PROJECT_DATA, BLOG_DATA } from "../Mercury/mercuryData";
 
 export const NavSlicePrep = () => {
   const links = NAV_DATA();
+  const leftNavs = SUPER_LINKIFY(links.leftNavs);
+  const rightNavs = SUPER_LINKIFY(links.rightNavs);
+
   const navData = {
-    leftNavs: SUPER_LINKIFY(links.leftNavs),
-    rightNavs: SUPER_LINKIFY(links.rightNavs),
+    leftNavs: leftNavs,
+    rightNavs: rightNavs,
     currentPage: null,
+    dropDowns: links.dropDowns,
   };
-  navData.dropDowns = { ...navData.leftNavs, ...navData.rightNavs };
+
+  // console.log("FINAL NAV DATA: ", navData);
   return navData;
 };
 

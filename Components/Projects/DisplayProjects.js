@@ -6,9 +6,9 @@ import { useClass, useSelect } from "../../Mercury/hooks/usehooks";
 const DisplayProjects = (props) => {
   const { theme, styles } = useSelect("THEME");
   const { GENERAL } = styles;
-  const { wrapSpaceBelow } = GENERAL;
+  const { wrapSpaceBelow, center } = GENERAL;
   const projects = props.projects;
-  const classes = useClass([css.col, "px-10"]);
+  const classes = useClass([css.col, "px-10", wrapSpaceBelow]);
   return projects.map((project, index) => {
     return (
       <Col

@@ -13,6 +13,10 @@
 .roundsilver {
   box-shadow: inset 0 0 24px 12px var(--silver);
 }
+
+.roundsilver {
+  box-shadow: 0 0 24px 12px var(--silver);
+}
 .roundorange {
   box-shadow: 0 0 24px 12px var(--orange);
 }

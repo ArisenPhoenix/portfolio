@@ -2,11 +2,17 @@ import IMPORT_ALL from "../Helpers/Nav/General/importAll";
 import { Blogs } from "../DummyData/Blogs";
 
 export const NAV_DATA = () => {
+  const leftNavs = [{ name: "Projects" }, { name: "Contact" }];
+  const rightNavs = [{ name: "Blog" }, { name: "Resume" }];
+  const leftDs = leftNavs.map((item) => item.name);
+  const rightDs = rightNavs.map((item) => item.name);
+  const dropDowns = [...leftDs, ...rightDs];
+
   const nav_data = {
-    leftNavs: [{ name: "Projects" }, { name: "About" }, { name: "Contact" }],
-    rightNavs: [{ name: "Blog" }, { name: "Resume" }],
+    leftNavs: leftNavs,
+    rightNavs: rightNavs,
     currentPage: null,
-    dropDowns: [],
+    dropDowns: dropDowns,
   };
   return nav_data;
 };

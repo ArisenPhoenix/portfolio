@@ -9,22 +9,27 @@ import { faVideo, faFileExport } from "@fortawesome/free-solid-svg-icons";
 import { useSelect, useClass } from "../../../Mercury/hooks/usehooks";
 
 const Project = (props) => {
-  const { theme, styles } = useSelect("THEME");
+  const { theme, styles, animations } = useSelect("THEME");
   const { bg, bgGlass, text, textGlass } = theme;
-  const { DIVS, GENERAL } = styles;
-  const { inheritBorderRadius } = GENERAL;
-  const classes = useClass([bg, text, inheritBorderRadius]);
+  const { GENERAL, BORDERS, TEXT } = styles;
+  const { POP } = animations;
+  const { smPop } = POP;
+  const { center, xlg } = TEXT;
+  const { roundsilver, wide, solid } = BORDERS;
+  const { inheritBorderRadius, centerAll } = GENERAL;
+  const classes = useClass([inheritBorderRadius]);
   const { name, link, gitHub, language, images, description, video, stack } =
     props.project;
+  const cardClass = useClass([roundsilver, wide, solid, smPop]);
 
   return (
-    <ProjectCard className={css.projectCard}>
+    <ProjectCard className={cardClass}>
       <div className={classes}>
-        <h4 className={css.name}>{name}</h4>
+        <h4 className={center}>{name}</h4>
         <Card className={css.carousel}>
           <DisplayImages images={images} />
         </Card>
-        <Card className={css.projectName}>
+        <Card className={xlg}>
           <ProjectButtons
             gitIcon={faGithub}
             webIcon={faFileExport}
@@ -34,15 +39,15 @@ const Project = (props) => {
             videoLink=""
           />
         </Card>
-        <Card className={css.description}>
+        <div className={css.description}>
           <p>Description: {description}</p>
-        </Card>
-        <Card className={css.languages}>
+        </div>
+        <div className={css.languages}>
           <p>Language: {language}</p>
-        </Card>
-        <Card className={`${classes}`}>
+        </div>
+        <div className={classes}>
           <Stack stack={stack} />
-        </Card>
+        </div>
       </div>
     </ProjectCard>
   );
