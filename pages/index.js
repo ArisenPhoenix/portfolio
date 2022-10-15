@@ -22,7 +22,7 @@ const Landing = () => {
         {images.map((image, index) => {
           return (
             <Image
-              key={useClass([index, "|", image.name])}
+              key={`${(index, "|", image.name)}`}
               src={image.src}
               alt={image.name}
               layout="intrinsic"
