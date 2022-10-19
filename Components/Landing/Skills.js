@@ -1,6 +1,9 @@
-import react from "../../public/icons/icons8-react-100.png";
+import react from "../../public/icons/icons8-react.png";
 import react2 from "../../public/icons/icons8-react.gif";
-import python from "../../public/icons/icons8-python.gif";
+import react2Dark from "../../public/icons/icons8-react.gif";
+import python from "../../public/icons/icons8-python.png";
+import python2 from "../../public/icons/icons8-python.gif";
+import python2Dark from "../../public/icons/icons8-pythonDark.gif";
 import mongoDB from "../../public/icons/icons8-mongodb-100.png";
 import next from "../../public/icons/icons8-next.js-100.png";
 import javaScript from "../../public/icons/icons8-javascript-100.png";
@@ -10,55 +13,89 @@ import Heading from "../UI/Text/Heading";
 import BootStrapGridder from "../../Components/UI/BootStrap/BootStrapGridder";
 import { Col } from "react-bootstrap";
 import Image from "next/image";
-import { useSelect, useClass } from "../../Merkurial/hooks/usehooks";
+import { useSelect, useClass, useWindow } from "../../Merkurial/hooks/usehooks";
+import { useEffect, useState } from "react";
 
-const GET_SKILL_DATA = () => {
-  const { theme } = useSelect("THEME");
+const Skills = (props) => {
+  const { height: HEIGHT } = useWindow();
+  const [isLoaded, setIsLoaded] = useState(false);
+  const { styles, theme } = useSelect("THEME");
+  const { GENERAL, COLORS, SPACING } = styles;
+  const { smPY, lgMY, lgMX, lgPX, lgPY } = SPACING;
+  const { bronze } = COLORS;
+  const { centerAll } = GENERAL;
   const currentTheme = theme.bg.split("_")[0];
   const nextIcon = currentTheme === "Dark" ? lightNext : next;
-  const images = [
-    { src: python, name: "python" },
+  const pythonGif = currentTheme === "Dark" ? python2Dark : python2;
+  const reactGif = currentTheme === "Dark" ? react2Dark : react2;
+
+  const logos = [
+    { src: isLoaded ? pythonGif : python, name: "python" },
     { src: mongoDB, name: "mongoDB" },
     { src: javaScript, name: "javaScript" },
     { src: nextIcon, name: "next" },
     { src: sql, name: sql },
-    { src: react2 ? react2 : react, name: "react" },
+    { src: isLoaded ? reactGif : react, name: "react" },
   ];
-  return { images: images };
-};
 
-const Skills = (props) => {
-  const { styles, theme } = useSelect("THEME");
-  const { GENERAL, DIMENSIONS, COLORS, SPACING } = styles;
-  const { smPY } = SPACING;
-  const { bronze } = COLORS;
-  const { centerAll } = GENERAL;
-  const { wholeX } = DIMENSIONS;
-  const iconDiv = useClass([wholeX, centerAll]);
-  const heading = useClass([smPY, bronze]);
-  const { images } = GET_SKILL_DATA();
+  const iconDiv = useClass([centerAll]);
+  const heading = useClass([smPY, bronze, theme.text]);
+  const imageClass = useClass([lgPX, lgPY, lgMX, lgMY, theme.bg]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (!isLoaded) {
+        setIsLoaded(true);
+      }
+    }, 4000);
+  }, [isLoaded]);
   return (
     <div className={iconDiv}>
       <Heading text="Skills" className={heading} />
-      <BootStrapGridder>
-        {images.map((image, index) => {
-          return (
-            <Col xxs="12" xs="4" key={`${(index, "|", image.name)}`}>
-              <Image
-                style={{ backgroundColor: "black" }}
-                src={image.src}
-                alt={image.name}
-                layout="intrinsic"
-                className={
-                  image.name === "python" || image.name === "react"
-                    ? theme.bg
-                    : theme.bg
-                }
-              />
-            </Col>
-          );
-        })}
-      </BootStrapGridder>
+      <div>
+        <BootStrapGridder>
+          {logos ? (
+            logos.map((image, index) => {
+              return (
+                <Col
+                  xxs="12"
+                  xs="6"
+                  md="4"
+                  xl="4"
+                  xxl="2"
+                  key={`${(index, "|", image.name)}`}
+                  style={{ height: "maxContent" }}
+                >
+                  <Image
+                    style={{
+                      backgroundColor: "black",
+                      color: "black",
+                    }}
+                    src={image.src}
+                    alt={image.name}
+                    layout="intrinsic"
+                    className={imageClass}
+                    loading={
+                      image.name === "react" || image.name === "python"
+                        ? undefined
+                        : "lazy"
+                    }
+                    height={`${HEIGHT}px`}
+                    width={`${HEIGHT}px`}
+                    priority={
+                      image.name === "react" || image.name === "python"
+                        ? true
+                        : false
+                    }
+                  />
+                </Col>
+              );
+            })
+          ) : (
+            <h1 className={centerAll}>----- Loading Skills -----</h1>
+          )}
+        </BootStrapGridder>
+      </div>
     </div>
   );
 };

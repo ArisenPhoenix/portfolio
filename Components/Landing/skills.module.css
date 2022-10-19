@@ -1,0 +1,6 @@
+.noPadding {
+  padding: 0 !important;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+}

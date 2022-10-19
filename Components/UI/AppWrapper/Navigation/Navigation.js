@@ -46,6 +46,7 @@ const Navigation = (props) => {
     text,
     nav,
   ]);
+
   const [displayDropDown, setDisplayDropDown] = useState(false);
   const [displayButton, setDisplayButton] = useState(false);
   const [currentPage, setCurrentPage] = useState({

@@ -8,14 +8,8 @@ const AppWrapper = (props) => {
   const { styles, theme } = useSelect("THEME");
   const { text, bg } = theme;
   const { NAVIGATION, BORDERS } = styles;
-  const {
-    footer,
-    canvasMargin,
-    navigationHeight,
-    navigationMargin,
-    wrapperSpacing,
-    canvasSpacing,
-  } = NAVIGATION;
+  const { footer, navigationHeight, navigationMargin, wrapperSpacing } =
+    NAVIGATION;
 
   const { roundgold } = BORDERS;
 

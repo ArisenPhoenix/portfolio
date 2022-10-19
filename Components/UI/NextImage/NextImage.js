@@ -13,6 +13,8 @@ const NextImage = (props) => {
         src={props.src}
         width={props.width}
         height={props.height}
+        onLoadingComplete={true}
+        loading={props.loading ? props.loading : "lazy"}
       />
     </div>
   );

@@ -1,17 +1,10 @@
-import ImageLink from "../../../../ImageLink/ImageLink";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import css from "./BrandItem.module.css";
-import {
-  useClass,
-  useSelect,
-  useWindow,
-} from "../../../../../Merkurial/hooks/usehooks";
+import { useClass, useSelect } from "../../../../../Merkurial/hooks/usehooks";
 
 const NavBrandImage = (props) => {
-  const { width: WIDTH } = useWindow();
   const { theme, styles } = useSelect("THEME");
-  const { bg, text } = theme;
+  const { bg } = theme;
   const { GENERAL, NAVIGATION } = styles;
   const { floatLeft } = GENERAL;
   const { brand } = NAVIGATION;
@@ -22,21 +15,17 @@ const NavBrandImage = (props) => {
     e.preventDefault();
     router.push(props.href);
   };
-  let width = "300px";
-  let height = "300px";
-  if (WIDTH > 2000) {
-    width = "500";
-  }
 
   return (
     <div onClick={handleClick} className={classes}>
-      <Image src={props.src} alt={props.alt} layout="responsive" />
+      <Image
+        src={props.src}
+        alt={props.alt}
+        layout="responsive"
+        loading="lazy"
+      />
     </div>
   );
-};
-
-export const NavBrandText = (name, image) => {
-  return <></>;
 };
 
 export default NavBrandImage;
