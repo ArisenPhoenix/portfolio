@@ -1,0 +1,6 @@
+.floatRight {
+  float: right;
+  text-align: right;
+  align-items: flex-end;
+  align-content: flex-end;
+}

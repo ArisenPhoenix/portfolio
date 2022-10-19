@@ -1,7 +1,7 @@
 import css from "./DisplayProjects.module.css";
 import Project from "./Project/Project";
 import { Col } from "react-bootstrap";
-import { useClass, useSelect } from "../../Mercury/hooks/usehooks";
+import { useClass, useSelect } from "../../Merkurial/hooks/usehooks";
 
 const DisplayProjects = (props) => {
   const { theme, styles } = useSelect("THEME");

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../Button/Button";
-import { useSelect, useClass } from "../../../Mercury/hooks/usehooks";
+import { useSelect, useClass } from "../../../Merkurial/hooks/usehooks";
 
 import InputGroup from "../InputGroup/InputGroup";
 

@@ -1,6 +1,6 @@
 import { Carousel } from "react-bootstrap";
 import NextImage from "../../../UI/NextImage/NextImage";
-import { useSelect, useClass } from "../../../../Mercury/hooks/usehooks";
+import { useSelect, useClass } from "../../../../Merkurial/hooks/usehooks";
 
 const DisplayImages = (props) => {
   const { theme, styles } = useSelect("THEME");

@@ -1,4 +1,5 @@
-import { useClass, useSelect } from "../../../Mercury/hooks/usehooks";
+import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
+import { TD_OBJECT, TD_GENERAL } from "./TABLE_DATA";
 
 const Table = (props) => {
   const { theme, styles } = useSelect("THEME");
@@ -23,6 +24,8 @@ const Table = (props) => {
     inheritBorderRadius,
   ]);
 
+  const tdClass = useClass([theme.text, props.tdClass]);
+
   return (
     <div className={classes}>
       <table className={tableClasses}>
@@ -34,19 +37,28 @@ const Table = (props) => {
           {props.rowData.map((data, index) => {
             const rowClass =
               props.perR && index % props.perR === 0 ? props.r1 : props.r2;
+
             return (
-              <tr key={index} className={rowClass}>
+              <tr key={`ROW|${index}`} className={rowClass}>
                 {data.map((datum, index) => {
+                  if (datum === null) return;
                   props.perD && index % props.perD === 0 ? props.d1 : props.d2;
 
-                  return (
-                    <td
-                      className={useClass([theme.text, props.tdClass])}
-                      key={`${index}|${datum}`}
-                    >
-                      {datum}
-                    </td>
-                  );
+                  {
+                    return typeof datum === "string" || datum?.$$typeof ? (
+                      <TD_GENERAL
+                        className={tdClass}
+                        key={`TD_GENERAL|${index}`}
+                        data={datum}
+                      />
+                    ) : (
+                      <TD_OBJECT
+                        className={tdClass}
+                        key={`TD_OBJECT|${index}`}
+                        data={datum}
+                      />
+                    );
+                  }
                 })}
               </tr>
             );

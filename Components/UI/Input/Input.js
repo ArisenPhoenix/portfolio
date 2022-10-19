@@ -1,4 +1,4 @@
-import { useSelect, useClass } from "../../../Mercury/hooks/usehooks";
+import { useSelect, useClass } from "../../../Merkurial/hooks/usehooks";
 
 const Input = (props) => {
   // console.log("INPUT PROPS: ", props);

@@ -2,6 +2,10 @@ import { useRouter } from "next/router";
 import css from "./Item.module.css";
 import Link from "../../../../../../Link/Link";
 import { LINKIFY } from "../../../../../../../Helpers/Nav/Text/Linkify";
+import {
+  useClass,
+  useSelect,
+} from "../../../../../../../Merkurial/hooks/usehooks";
 
 const Item = (props) => {
   const router = useRouter();
@@ -14,12 +18,10 @@ const Item = (props) => {
     props.updateTop(text);
   };
 
-  const defaultClasses = active
-    ? `${props.className} ${css.textActive}`
-    : `${props.className} ${css.text}`;
+  const defaultClasses = useClass(active ? [css.textActive] : [css.text]);
 
   return (
-    <div className={css.navDiv} onClick={updateTop}>
+    <div className={defaultClasses} onClick={updateTop}>
       <Link
         text={props.text}
         onClick={() => {}}

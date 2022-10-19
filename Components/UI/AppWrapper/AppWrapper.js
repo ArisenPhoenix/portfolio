@@ -1,7 +1,7 @@
 import Navigation from "./Navigation/Navigation";
 import Footer from "./Footer/Footer";
-import Nav_Context_Provider from "../../../store/Context/NAV_CONTEXT/nav_context";
-import { useSelect, useClass } from "../../../Mercury/hooks/usehooks";
+import Nav_Context_Provider from "../../../Merkurial/store/Context/NAV_CONTEXT/nav_context";
+import { useSelect, useClass } from "../../../Merkurial/hooks/usehooks";
 import Canvas from "./Canvas/Canvas";
 
 const AppWrapper = (props) => {

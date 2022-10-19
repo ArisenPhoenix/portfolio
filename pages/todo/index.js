@@ -1,7 +1,7 @@
 import Frosty from "../../Components/UI/FrostedGlassDiv/Frosty";
 import css from "./todo.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { TodoSliceActions } from "../../store/Redux/Store";
+import { TodoSliceActions } from "../../Merkurial/store/Redux/Store";
 import Todo from "../../Components/Todo/Todo";
 import Input from "../../Components/UI/Input/Input";
 import Button from "../../Components/UI/Button/Button";

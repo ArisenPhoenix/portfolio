@@ -1,8 +1,15 @@
 import css from "./DropDownContainer.module.css";
 import Item from "./Item/Item";
+import {
+  useClass,
+  useSelect,
+} from "../../../../../../Merkurial/hooks/usehooks";
 
 const DropDownContainer = (props) => {
-  const classes = `${css.container}`;
+  const { theme, styles } = useSelect("THEME");
+  const { GENERAL, BORDERS, NAVIGATION } = styles;
+  const { dropDownContainer } = NAVIGATION;
+  const classes = useClass([css.container, dropDownContainer]);
   return (
     <div className={classes} onClick={props.onClick}>
       {props.show &&

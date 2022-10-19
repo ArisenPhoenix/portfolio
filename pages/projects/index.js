@@ -1,7 +1,7 @@
-import { ProjectContextProvider } from "../../store/Context/PROJECT_CONTEXT/project_context";
+import { ProjectContextProvider } from "../../Merkurial/store/Context/PROJECT_CONTEXT/project_context";
 import DisplayProjects from "../../Components/Projects/DisplayProjects";
 import BootStrapGridder from "../../Components/UI/BootStrap/BootStrapGridder";
-import { useSelect, useClass } from "../../Mercury/hooks/usehooks";
+import { useSelect, useClass } from "../../Merkurial/hooks/usehooks";
 
 const Projects = () => {
   const { PROJECTS, THEME } = useSelect();

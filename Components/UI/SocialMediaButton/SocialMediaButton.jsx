@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useClass, useSelect } from "../../../Mercury/hooks/usehooks";
+import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
 
 const SocialMediaButton = (props) => {
   const { GENERAL, BORDERS } = useSelect("THEME").styles;

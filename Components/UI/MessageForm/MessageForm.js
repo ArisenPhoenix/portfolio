@@ -1,5 +1,5 @@
 import Button from "../Button/Button";
-import { useSelect, useClass } from "../../../Mercury/hooks/usehooks";
+import { useSelect, useClass } from "../../../Merkurial/hooks/usehooks";
 import InputGroup from "../InputGroup/InputGroup";
 import BootstrapGridder from "../BootStrap/BootStrapGridder";
 import { Col } from "react-bootstrap";

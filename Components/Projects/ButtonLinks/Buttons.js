@@ -1,5 +1,5 @@
 import SocialMediaButton from "../../UI/SocialMediaButton/SocialMediaButton";
-import { useSelect } from "../../../Mercury/hooks/usehooks";
+import { useSelect } from "../../../Merkurial/hooks/usehooks";
 import Table from "../../UI/Table/Table";
 
 const ProjectButtons = (props) => {

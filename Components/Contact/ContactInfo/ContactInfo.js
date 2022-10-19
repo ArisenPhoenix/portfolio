@@ -1,7 +1,7 @@
 import css from "./ContactInfo.module.css";
 import Heading from "../../UI/Text/Heading";
 import Table from "../../UI/Table/Table";
-import { useSelect, useClass } from "../../../Mercury/hooks/usehooks";
+import { useSelect, useClass } from "../../../Merkurial/hooks/usehooks";
 
 const ContactInfo = (props) => {
   const { styles } = useSelect("THEME");

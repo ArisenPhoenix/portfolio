@@ -6,7 +6,7 @@ import DisplayImages from "./Images/DisplayImages";
 import ProjectButtons from "../ButtonLinks/Buttons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faVideo, faFileExport } from "@fortawesome/free-solid-svg-icons";
-import { useSelect, useClass } from "../../../Mercury/hooks/usehooks";
+import { useSelect, useClass } from "../../../Merkurial/hooks/usehooks";
 
 const Project = (props) => {
   const { theme, styles, animations } = useSelect("THEME");

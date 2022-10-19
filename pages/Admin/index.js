@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
-import { useSelect, useClass } from "../../Mercury/hooks/usehooks";
+import { useSelect, useClass } from "../../Merkurial/hooks/usehooks";
 import Input from "../../Components/UI/Input/Input";
 import Label from "../../Components/UI/Label/Label";
 import Button from "../../Components/UI/Button/Button";
-import { AdminContext } from "../../store/Context/ADMIN_CONTEXT/admin_context";
+import { AdminContext } from "../../Merkurial/store/Context/ADMIN_CONTEXT/admin_context";
 import Heading from "../../Components/UI/Text/Heading";
 import SubHeading from "../../Components/UI/Text/SubHeading";
 

@@ -1,7 +1,7 @@
 import css from "./ContactPage.module.css";
 import MessageBox from "./MessageBox/MessageBox";
 import ContactInfo from "./ContactInfo/ContactInfo";
-import { useSelect, useClass } from "../../Mercury/hooks/usehooks";
+import { useSelect, useClass } from "../../Merkurial/hooks/usehooks";
 
 const ContactPage = () => {
   const { THEME, CONTACTS } = useSelect(false);

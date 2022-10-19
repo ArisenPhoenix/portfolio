@@ -1,5 +1,5 @@
 import Card from "../../UI/Card/Card";
-import { useClass, useSelect } from "../../../Mercury/hooks/usehooks";
+import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
 
 const ProjectCard = (props) => {
   const { theme, styles } = useSelect("THEME");

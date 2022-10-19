@@ -1,6 +1,6 @@
 import css from "./BlogCard.module.css";
 import TextBox from "../../UI/Text/TextBox";
-import { useClass, useSelect } from "../../../Mercury/hooks/usehooks";
+import { useSelect, useClass } from "../../../Merkurial/hooks/usehooks";
 
 const BlogCard = (props) => {
   const transparentCardClass = useClass([css.blogCard, props.className]);

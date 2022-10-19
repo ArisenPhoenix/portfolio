@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useClass, useSelect } from "../../../Mercury/hooks/usehooks";
+import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
 import SEND_EMAIL from "../../../Helpers/API/SEND_EMAIL";
 import { useRouter } from "next/router";
 import MessageForm from "../../UI/MessageForm/MessageForm";

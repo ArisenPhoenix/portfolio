@@ -1,6 +1,6 @@
 import Blog from "../../Components/Blog/Blog";
 import css from "./Blog.module.css";
-import { useSelect, useClass } from "../../Mercury/hooks/usehooks";
+import { useClass, useSelect } from "../../Merkurial/hooks/usehooks";
 
 const BlogPage = () => {
   const { THEME, BLOGS } = useSelect();

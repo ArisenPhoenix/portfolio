@@ -4,11 +4,11 @@ import { Col } from "react-bootstrap";
 import Button from "../../UI/Button/Button";
 import BlogCard from "../BlogCard/BlogCard";
 import { useRouter } from "next/router";
-import { BlogSliceActions } from "../../../store/Redux/Store";
+import { BlogSliceActions } from "../../../Merkurial/store/Redux/Store";
 import { useContext } from "react";
-import { AdminContext } from "../../../store/Context/ADMIN_CONTEXT/admin_context";
+import { AdminContext } from "../../../Merkurial/store/Context/ADMIN_CONTEXT/admin_context";
 const { addNew } = BlogSliceActions;
-import { useSelect, useClass } from "../../../Mercury/hooks/usehooks";
+import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
 
 const DisplayBlogs = (props) => {
   const { theme, styles } = useSelect("THEME");

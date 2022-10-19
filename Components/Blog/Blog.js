@@ -1,5 +1,5 @@
 import DisplayBlogs from "./DisplayBlogs/DisplayBlogs";
-import { useSelect, useClass } from "../../Mercury/hooks/usehooks";
+import { useClass, useSelect } from "../../Merkurial/hooks/usehooks";
 
 const Blog = (props) => {
   const { theme, styles } = useSelect("THEME");

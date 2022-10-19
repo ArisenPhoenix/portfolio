@@ -1,5 +1,5 @@
 import Table from "../../../UI/Table/Table";
-import { useSelect, useClass } from "../../../../Mercury/hooks/usehooks";
+import { useSelect, useClass } from "../../../../Merkurial/hooks/usehooks";
 
 const Stack = (props) => {
   const { styles } = useSelect("THEME");

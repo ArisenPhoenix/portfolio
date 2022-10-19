@@ -1,6 +1,6 @@
 import Label from "../Label/Label";
 import Input from "../Input/Input";
-import { useClass, useSelect } from "../../../Mercury/hooks/usehooks";
+import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
 
 const InputGroupSameLine = (props) => {
   // console.log("Input Group Props: ", props);
