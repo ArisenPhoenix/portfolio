@@ -10,7 +10,10 @@ const BlogSlice = createSlice({
   initialState: initialState,
   reducers: {
     addNew: () => {
-      return "/blog/new";
+      return "/blog/addNew";
+    },
+    addBlog: (state, action) => {
+      state.blogs + action.payload;
     },
   },
 });

@@ -3,7 +3,7 @@ import Input from "../Input/Input";
 import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
 
 const InputGroupSameLine = (props) => {
-  // console.log("Input Group Props: ", props);
+  // console.log("INPUT GROUP PROPS: ", props);
   const { theme } = useSelect("THEME");
   const { bg, text } = theme;
   const l = props.label;
@@ -30,7 +30,7 @@ const InputGroupSameLine = (props) => {
           value={i.value}
           required={i.required}
           type={i.type}
-          onChange={props.onChange}
+          onChange={i.onChange}
         />
       </div>
     </div>

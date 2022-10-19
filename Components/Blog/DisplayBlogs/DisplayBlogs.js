@@ -15,7 +15,6 @@ const DisplayBlogs = (props) => {
   const { bgGlass, textGlass } = theme;
   const { GENERAL } = styles;
   const { transparent } = GENERAL;
-  const blogClass = useClass([transparent, bgGlass, textGlass]);
   const blogContainerClass = useClass([transparent]);
   const adminCtx = useContext(AdminContext);
   const admin = adminCtx.admin;

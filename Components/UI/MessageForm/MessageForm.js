@@ -6,6 +6,7 @@ import { Col } from "react-bootstrap";
 import Heading from "../Text/Heading";
 
 const MessageForm = (props) => {
+  // console.log("MESSAGE FORM PROPS: ", props);
   const { theme, styles } = useSelect("THEME");
   const { bg, text } = theme;
   const { GENERAL, DIVS, BORDERS, DIMENSIONS, TEXT, SPACING } = styles;
@@ -56,10 +57,10 @@ const MessageForm = (props) => {
             text={props.message === "" ? props.defaultMessage : props.message}
             className={headingClass}
           />
-          {inputs.map((input, index) => {
+          {inputs.map((group, index) => {
             const cols = props.inputData.cols;
-            const ins = input.input;
-            const lab = input.label;
+            const ins = group.input;
+            const lab = group.label;
 
             return (
               <Col
@@ -76,12 +77,12 @@ const MessageForm = (props) => {
                     value: ins.value,
                     name: ins.name ? ins.name : ins.text.toLowerCase(),
                     required: ins.required,
+                    onChange: onChange,
                   }}
                   inputClass={inputClasses}
                   inputDivClass={inline}
                   labelDivClass={labelDivClasses}
                   className={inputGroupDivClass}
-                  onChange={onChange}
                 />
               </Col>
             );

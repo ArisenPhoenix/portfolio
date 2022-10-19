@@ -1,13 +1,17 @@
 import { useState } from "react";
 import Button from "../../UI/Button/Button";
 import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
-
+import FETCH from "../../../Merkurial/Helpers/FETCH";
+import { BlogSliceActions } from "../../../Merkurial/store/Redux/Store";
 import InputGroup from "../../UI/InputGroup/InputGroup";
 
 const BlogForm = (props) => {
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
   const [blogText, setBlogText] = useState("");
+
+  const { addBlog } = BlogSliceActions;
+
   const { theme, styles } = useSelect("THEME");
   const { bg, text, bgGlass, textGlass } = theme;
   const { GENERAL, DIVS, BORDERS, DIMENSIONS, TEXT, SPACING } = styles;
@@ -63,14 +67,23 @@ const BlogForm = (props) => {
     name === "text" && setBlogText(value);
   };
 
-  const handleClick = (e) => {
+  const handleSubmit = async (e) => {
+    const data = {
+      author: name,
+      title: title,
+      body: blogText,
+    };
+
+    addBlog(data);
     e.preventDefault();
     console.log("Submitted");
+    const info = await FETCH("/api/blogs", "POST", data, "ADD BLOG FORM");
+    console.log("FETCH INFO: ", info);
   };
 
   return (
     <div className={mainDivClass}>
-      <form onSubmit={handleClick} className={formClass}>
+      <form onSubmit={handleSubmit} className={formClass}>
         <div className={inputGroupDivClass}>
           <InputGroup
             label={{ text: "Name" }}
