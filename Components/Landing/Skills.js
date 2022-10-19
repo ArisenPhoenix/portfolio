@@ -10,8 +10,6 @@ import Heading from "../UI/Text/Heading";
 import BootStrapGridder from "../../Components/UI/BootStrap/BootStrapGridder";
 import { Col } from "react-bootstrap";
 import Image from "next/image";
-
-import { ControlledImage } from "../UI/NextImage/NextImage";
 import { useSelect, useClass } from "../../Merkurial/hooks/usehooks";
 
 const GET_SKILL_DATA = () => {

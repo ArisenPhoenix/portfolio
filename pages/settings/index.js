@@ -1,4 +1,4 @@
-import MERK_THEMES from "../../Mercury/CSS/Themes/MERK_THEMES";
+import MERK_THEMES from "../../Merkurial/CSS/Themes/MERK_THEMES";
 import { ThemeProviderActions } from "../../Merkurial/store/Redux/Store";
 import { useDispatch } from "react-redux";
 
