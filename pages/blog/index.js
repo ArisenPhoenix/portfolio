@@ -17,7 +17,7 @@ const BlogPage = () => {
 
   const getBlogs = async () => {
     const allBlogs = await FETCH("/api/blogs", "GET");
-    // console.log("ALL BLOGS: ", allBlogs);
+
     setBlogs(allBlogs);
     SAVE_TO_LOCAL_STORAGE(allBlogs, "blogs");
     return allBlogs;
@@ -31,12 +31,10 @@ const BlogPage = () => {
   };
 
   const timeLeft = useSetTimeOut("updateBlogs", 500000, setTimeOutCallBack);
-  // console.log("TIME LEFT: ", timeLeft);
 
   useEffect(() => {
     const getBlogs = async () => {
       const allBlogs = await FETCH("/api/blogs", "GET");
-      console.log("ALL BLOGS: ", allBlogs);
       setBlogs(allBlogs);
       SAVE_TO_LOCAL_STORAGE(allBlogs, "blogs");
       return allBlogs;

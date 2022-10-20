@@ -13,7 +13,7 @@ const BlogForm = (props) => {
   const { addBlog } = BlogSliceActions;
 
   const { theme, styles } = useSelect("THEME");
-  const { bg, text, bgGlass, textGlass } = theme;
+  const { bg, text } = theme;
   const { GENERAL, DIVS, BORDERS, DIMENSIONS, TEXT, SPACING } = styles;
   const { smR, smPY } = SPACING;
   const { paragraphIndent, xlg } = TEXT;

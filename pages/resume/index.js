@@ -6,8 +6,7 @@ import css from "./resume.module.css";
 const Resume = (props) => {
   return (
     <div>
-      <h1>Resume</h1>;<div className={css.pdf}></div>
-      {/* <PersonalResume /> */}
+      <h1>In Development</h1>
     </div>
   );
 };

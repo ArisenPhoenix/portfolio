@@ -10,7 +10,6 @@ import {
   SAVE_TO_LOCAL_STORAGE,
   RETREIVE_FROM_LOCAL_STORAGE,
 } from "../../Merkurial/API_STORAGE/STORAGe/HANDLE_STORAGE";
-import { useRouter } from "next/router";
 
 const AdminLogin = () => {
   const adminCtx = useContext(AdminContext);
@@ -36,30 +35,15 @@ const AdminLogin = () => {
       let retreivedAdminData = RETREIVE_FROM_LOCAL_STORAGE("admin");
       if (retreivedAdminData?.admin) {
         LOGIN(retreivedAdminData);
-        // router.reload();
       }
     }
-  }, [admin]);
+  }, [admin, LOGIN]);
 
   const { theme, styles } = useSelect("THEME");
-  const { GENERAL, DIVS, BORDERS, ABSOLUTE, COLORS, DIMENSIONS } = styles;
-  const {
-    centerAll,
-    smallSpaceBelow,
-    largeYMargin,
-    removeAllStyles,
-    fillWhiteSpace,
-  } = GENERAL;
-  const { red, green, orange, orangeRed, pink, purple } = COLORS;
-  const { wholeX, quarterX, halfX } = DIMENSIONS;
-  const { bg, text } = theme;
-  const { centerLeft, centerRight, fillRight, fillLeft, left, right } =
-    ABSOLUTE;
+  const { GENERAL, DIVS, BORDERS } = styles;
+  const { centerAll, smallSpaceBelow, largeYMargin, fillWhiteSpace } = GENERAL;
 
-  const testLeftDivClass = useClass([fillLeft, green]);
-  const testRightDivClass = useClass([fillRight, green]);
-  const testLeftButtonClass = useClass([purple]);
-  const testRightButtonClass = useClass([pink]);
+  const { bg, text } = theme;
 
   const { largeRound } = BORDERS;
   const { form } = DIVS;
@@ -116,32 +100,6 @@ const AdminLogin = () => {
       setWrongValuesMessage(null);
     }, 5000);
   };
-
-  const test = false;
-  const testers = test && (
-    <>
-      <div className={testLeftDivClass}>
-        <button
-          className={testLeftButtonClass}
-          onClick={() => {
-            console.log("Button Pressed");
-          }}
-        >
-          Left Button
-        </button>
-      </div>
-      <div className={testRightDivClass}>
-        <button
-          className={testRightButtonClass}
-          onClick={() => {
-            console.log("Button Pressed");
-          }}
-        >
-          Right Button
-        </button>
-      </div>
-    </>
-  );
   const mainClass = useClass([bg, fillWhiteSpace]);
 
   return (
@@ -164,7 +122,7 @@ const AdminLogin = () => {
           />
         )}
         <form className={formClass} onSubmit={handleSubmit}>
-          {/* <Label text="First Name" /> */}
+          <Label />
           <Input
             className={inputClass}
             onChange={handleChange}
