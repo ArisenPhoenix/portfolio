@@ -1,0 +1,10 @@
+/* @import url("../../../media/Phoenix/FlyingPhoenix/"); */
+
+.bg {
+  background-image: url("../../../media/Phoenix/FlyingPhoenix/phoenix.jpg");
+  background-position: center;
+}
+
+.card {
+  background-color: rgba(180, 33, 180, 0.978);
+}

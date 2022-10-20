@@ -31,8 +31,6 @@ const BlogForm = (props) => {
     roundsilver,
   } = BORDERS;
 
-  console.log("BORDERS: ", BORDERS);
-
   const mainDivClass = useClass([
     centerAll,
     wholeX,
@@ -76,9 +74,7 @@ const BlogForm = (props) => {
 
     addBlog(data);
     e.preventDefault();
-    console.log("Submitted");
     const info = await FETCH("/api/blogs", "POST", data, "ADD BLOG FORM");
-    console.log("FETCH INFO: ", info);
   };
 
   return (

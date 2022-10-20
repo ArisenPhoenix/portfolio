@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { REMOVE_FROM_LOCAL_STORAGE } from "../../../API_STORAGE/STORAGe/HANDLE_STORAGE";
 
 export const AdminContext = createContext({
   admin: false,
@@ -22,12 +23,17 @@ const AdminContextProvider = (props) => {
 
   const LOGOUT_ADMIN = () => {
     setCredentials(defaultState);
+    REMOVE_FROM_LOCAL_STORAGE("admin");
   };
 
   const GET_CREDENTIALS = async (credentials) => {
     const adminCredentials = await VALIDATE_ADMIN(credentials);
     setCredentials(adminCredentials);
     return adminCredentials;
+  };
+
+  const LOGIN = (data) => {
+    setCredentials(data);
   };
 
   const VALIDATE_ADMIN = async (credentials) => {
@@ -52,6 +58,7 @@ const AdminContextProvider = (props) => {
     message: creds.message,
     validate: GET_CREDENTIALS,
     logout: LOGOUT_ADMIN,
+    LOGIN: LOGIN,
   };
 
   return (

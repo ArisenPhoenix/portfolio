@@ -52,6 +52,135 @@
   margin-left: 10%;
 }
 
+/* margin top */
+
+.xsmMT {
+  margin-top: 1%;
+}
+
+.smMT {
+  margin-top: 2%;
+}
+
+.mdMT {
+  margin-top: 4%;
+}
+
+.lgMT {
+  margin-top: 5%;
+}
+
+.xlgMT {
+  margin-top: 8%;
+}
+
+.xxlgMT {
+  margin-top: 10%;
+}
+
+/* Padding Top */
+
+.xsmMB {
+  margin-bottom: 1%;
+}
+
+.smMB {
+  margin-bottom: 2%;
+}
+
+.mdMB {
+  margin-bottom: 4%;
+}
+
+.lgMB {
+  margin-bottom: 5%;
+}
+
+.xlgMB {
+  margin-bottom: 8%;
+}
+
+.xxlgMB {
+  margin-bottom: 10%;
+}
+
+/* Padding Top */
+
+.xsmMT {
+  margin-top: 1%;
+}
+
+.smMT {
+  margin-top: 2%;
+}
+
+.mdMT {
+  margin-top: 4%;
+}
+
+.lgMT {
+  margin-top: 5%;
+}
+
+.xlgMT {
+  margin-top: 8%;
+}
+
+.xxlgMT {
+  margin-top: 10%;
+}
+
+/* Padding Top */
+.xsmPT {
+  padding-top: 1%;
+}
+
+.smPT {
+  padding-top: 2%;
+}
+
+.mdPT {
+  padding-top: 4%;
+}
+
+.lgPT {
+  padding-top: 5%;
+}
+
+.xlgPT {
+  padding-top: 8%;
+}
+
+.xxlgPT {
+  padding-top: 10%;
+}
+
+/* Padding Bottom */
+
+.xsmPB {
+  padding-bottom: 1%;
+}
+
+.smPB {
+  padding-bottom: 2%;
+}
+
+.mdPB {
+  padding-bottom: 4%;
+}
+
+.lgPB {
+  padding-bottom: 5%;
+}
+
+.xlgPB {
+  padding-bottom: 8%;
+}
+
+.xxlgPB {
+  padding-bottom: 10%;
+}
+
 /* x margin left and right */
 
 .xsmMX {

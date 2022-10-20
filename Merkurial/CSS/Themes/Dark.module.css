@@ -230,17 +230,17 @@
 }
 
 .bgGlass div {
-  background-color: var(--black);
+  background-color: var(--blackGlass);
 }
 
 .bgGlass input {
-  background-color: var(--black);
+  background-color: var(--blackGlass);
 }
 
 .bgGlass input:focus,
 .bgGlass input:hover {
-  background-color: var(--white);
-  color: var(--black);
+  background-color: var(--whiteGlass);
+  color: var(--blackGlass);
 }
 
 /* Firefox +*/
@@ -256,7 +256,7 @@
 
 .bgGlass table {
   background: var(--blackGlass);
-  color: var(--white);
+  color: var(--whiteGlass);
 }
 
 .bgGlass input:-webkit-autofill,
@@ -265,7 +265,7 @@
   color: var(--whiteGlass);
   border: 1px solid var(--green);
   -webkit-text-fill-color: var(--green);
-  box-shadow: 0 0 0px 1000px var(--black) inset;
-  -webkit-box-shadow: 0 0 0px 1000px var(--black) inset;
+  box-shadow: 0 0 0px 1000px var(--blackGlass) inset;
+  -webkit-box-shadow: 0 0 0px 1000px var(--blackGlass) inset;
   transition: background-color 500ms ease-in-out 1s;
 }

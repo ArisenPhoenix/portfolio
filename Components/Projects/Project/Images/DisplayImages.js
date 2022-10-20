@@ -18,10 +18,12 @@ const DisplayImages = (props) => {
               <Carousel.Item key={`image ${index}`} className={carouselClass}>
                 <NextImage
                   key={`Image| ${index}`}
-                  layout="intrinsic"
+                  layout="responsive"
                   src={thisImage}
                   width={2000}
                   height={2000}
+                  loading={"eager"}
+                  priority={true}
                 />
               </Carousel.Item>
             ) : null;

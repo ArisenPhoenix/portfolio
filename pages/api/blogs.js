@@ -1,4 +1,5 @@
-import { MongoClient, ObjectId, ServerApiVersion } from "mongodb";
+import { ObjectId } from "mongodb";
+import MONGO_CLIENT from "../../Merkurial/API_STORAGE/APIS/MONGO_CLIENT";
 
 const handleBlogAction = async (req, res) => {
   const method = req.method;
@@ -19,15 +20,11 @@ const handleBlogAction = async (req, res) => {
     body: body,
     date: date,
   };
-  const client = new MongoClient(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverApi: ServerApiVersion.v1,
-  });
-
-  const collection = client.db("portfolio").collection("blogs");
 
   if (method === "POST") {
+    const { collection, client } = await MONGO_CLIENT();
+    // client.connect(process.env.MONGO_URI);
+
     collection
       .insertOne({ ...data })
       .then((response) => {
@@ -48,17 +45,23 @@ const handleBlogAction = async (req, res) => {
       });
     client.close();
   } else if (method === "GET") {
-    collection
-      .find({})
-      .then((result) => {
-        if (result.acknowledged) {
-          return result.toArray();
-        }
-      })
-      .then((data) => {
-        res.status(200);
-        res.send(data);
-      });
+    const { collection, client } = await MONGO_CLIENT("BLOGS GET");
+    const cursor = await collection.find({});
+
+    const array = await cursor.toArray();
+    if (array.length > 0) {
+      const data = JSON.stringify(array);
+      res.status(200);
+      res.send(data);
+
+      // res.json(cursor);
+    } else {
+      const message = "THERE ARE NO BLOGS AVAILABLE";
+      res.status(400);
+      res.send({ err: message });
+    }
+
+    client.close();
   } else if (method === "PUT") {
     data._id = ObjectId(_id);
     collection.updateOne(filter, data, { upsert: false }).then((response) => {

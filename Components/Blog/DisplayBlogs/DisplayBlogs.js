@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { AdminContext } from "../../../Merkurial/store/Context/ADMIN_CONTEXT/admin_context";
 const { addNew } = BlogSliceActions;
 import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
+import Router from "next/router";
 
 const DisplayBlogs = (props) => {
   const { theme, styles } = useSelect("THEME");
@@ -19,6 +20,7 @@ const DisplayBlogs = (props) => {
   const adminCtx = useContext(AdminContext);
   const admin = adminCtx.admin;
   const router = useRouter();
+
   const handleClick = () => {
     router.push(addNew().type);
   };
@@ -32,14 +34,18 @@ const DisplayBlogs = (props) => {
           onClick={handleClick}
         />
       )}
+
       <BootStrapGridder fluid="true">
         {props.blogs.map((blog, index) => {
           return (
             <Col xs="12" md="6" lg="6" key={`Col ${blog.title} ${index}`}>
               <BlogCard
+                key={blog._id}
+                _id={blog._id}
                 author={blog.author}
                 body={blog.body}
                 title={blog.title}
+                date={blog.date}
               />
             </Col>
           );

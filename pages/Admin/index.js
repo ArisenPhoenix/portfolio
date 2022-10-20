@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useSelect, useClass } from "../../Merkurial/hooks/usehooks";
 import Input from "../../Components/UI/Input/Input";
 import Label from "../../Components/UI/Label/Label";
@@ -6,12 +6,15 @@ import Button from "../../Components/UI/Button/Button";
 import { AdminContext } from "../../Merkurial/store/Context/ADMIN_CONTEXT/admin_context";
 import Heading from "../../Components/UI/Text/Heading";
 import SubHeading from "../../Components/UI/Text/SubHeading";
+import {
+  SAVE_TO_LOCAL_STORAGE,
+  RETREIVE_FROM_LOCAL_STORAGE,
+} from "../../Merkurial/API_STORAGE/STORAGe/HANDLE_STORAGE";
+import { useRouter } from "next/router";
 
 const AdminLogin = () => {
   const adminCtx = useContext(AdminContext);
-  const admin = adminCtx.admin;
-  const VALIDATE = adminCtx.validate;
-  const LOGOUT = adminCtx.logout;
+  const LOGIN = adminCtx.LOGIN;
   const [message, setMessage] = useState(null);
   const [wrongValuesMessage, setWrongValuesMessage] = useState(null);
   const [fName, setFName] = useState("");
@@ -19,6 +22,24 @@ const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [pin, setPin] = useState("");
+  const admin = adminCtx.admin;
+
+  const VALIDATE = adminCtx.validate;
+  const LOGOUT = adminCtx.logout;
+
+  const handleLogout = () => {
+    LOGOUT();
+  };
+
+  useEffect(() => {
+    if (!admin) {
+      let retreivedAdminData = RETREIVE_FROM_LOCAL_STORAGE("admin");
+      if (retreivedAdminData?.admin) {
+        LOGIN(retreivedAdminData);
+        // router.reload();
+      }
+    }
+  }, [admin]);
 
   const { theme, styles } = useSelect("THEME");
   const { GENERAL, DIVS, BORDERS, ABSOLUTE, COLORS, DIMENSIONS } = styles;
@@ -74,6 +95,8 @@ const AdminLogin = () => {
       setEmail("");
       setPassword("");
       setPin("");
+      submittedCredentials.admin = true;
+      SAVE_TO_LOCAL_STORAGE(submittedCredentials, "admin");
     } else {
       const allValues = Object.keys(validated);
       const wrongValues = allValues.map((value, index) => {
@@ -123,7 +146,7 @@ const AdminLogin = () => {
 
   return (
     <div className={mainClass}>
-      {testers}
+      {admin && <h1 className={`${text} ${centerAll}`}>You Are Admin!</h1>}
       <div className={divClass}>
         <Heading text={message} />
         <SubHeading
@@ -134,7 +157,11 @@ const AdminLogin = () => {
           }
         />
         {admin && (
-          <Button text="Logout" onClick={LOGOUT} divClass={largeYMargin} />
+          <Button
+            text="Logout"
+            onClick={handleLogout}
+            divClass={largeYMargin}
+          />
         )}
         <form className={formClass} onSubmit={handleSubmit}>
           {/* <Label text="First Name" /> */}

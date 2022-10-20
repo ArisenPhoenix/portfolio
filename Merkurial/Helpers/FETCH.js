@@ -1,6 +1,6 @@
 const FETCH = async (api_route, method, body, functionThatCalled) => {
-  functionThatCalled &&
-    console.log(`${functionThatCalled} is fetching using the ${method} method`);
+  // functionThatCalled &&
+  //   console.log(`${functionThatCalled} is fetching using the ${method} method`);
   const m = method.toUpperCase();
   const b = body ? body : null;
   try {
@@ -11,9 +11,17 @@ const FETCH = async (api_route, method, body, functionThatCalled) => {
       },
       body: m === "GET" ? null : JSON.stringify(b),
     });
-    if (response.err || response.error || response.status == 400) {
+
+    console.log("FETCH RESPONSE: ", response);
+    if (
+      !response.ok ||
+      response.err ||
+      response.error ||
+      response.status == 400 ||
+      response.status == 500
+    ) {
       console.log("IN FETCH RESPONSE: ", response);
-      return response;
+      return { err: response };
     }
     const data = await response.json();
     return data;

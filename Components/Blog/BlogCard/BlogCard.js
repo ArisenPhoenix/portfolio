@@ -1,6 +1,10 @@
 import css from "./BlogCard.module.css";
 import TextBox from "../../UI/Text/TextBox";
 import { useSelect, useClass } from "../../../Merkurial/hooks/usehooks";
+import { useRouter } from "next/router";
+import ROUTIFY from "../../../Merkurial/Helpers/ROUTIFY";
+import { SAVE_TO_LOCAL_STORAGE } from "../../../Merkurial/API_STORAGE/STORAGe/HANDLE_STORAGE";
+import { LINKIFY } from "../../../Merkurial/store/Redux/NavSlice/LINKIFY";
 
 const BlogCard = (props) => {
   const transparentCardClass = useClass([css.blogCard, props.className]);
@@ -11,7 +15,7 @@ const BlogCardContainer = (props) => {
   const flipCardClass = useClass([props.className, css.flipCard]);
   const innerDivClass = useClass([props.inner, css.inner]);
   return (
-    <div className={flipCardClass}>
+    <div className={flipCardClass} onClick={props.onClick}>
       <div className={innerDivClass}>{props.children}</div>
     </div>
   );
@@ -51,8 +55,49 @@ const FlipCard = (props) => {
   const frontSide = useClass([front, text]);
   const containerClass = useClass([flipY180, threeD]);
   const innerContainerClass = useClass([card]);
+  const router = useRouter();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const title = props.title;
+    let link = props.title;
+
+    if (link.includes("#")) {
+      link = link.replace("#", "number");
+    }
+
+    link = LINKIFY(link, "blog").link;
+
+    link = link + "-id-" + props._id;
+
+    const query = {
+      author: props.author,
+      body: props.body,
+      _id: props._id,
+      title: title,
+    };
+
+    const routerParams = {
+      pathname: link,
+      query: {
+        author: props.author,
+        body: props.body,
+        _id: props._id,
+        title: title,
+        data: props.date,
+      },
+    };
+    const storageData = { ...query, link: link };
+    SAVE_TO_LOCAL_STORAGE(storageData, "latestBlog");
+
+    router.push(routerParams, link);
+  };
   return (
-    <BlogCardContainer className={containerClass} inner={innerContainerClass}>
+    <BlogCardContainer
+      className={containerClass}
+      inner={innerContainerClass}
+      onClick={handleClick}
+    >
       <FrontSide
         text1={props.title}
         text2={props.author}
