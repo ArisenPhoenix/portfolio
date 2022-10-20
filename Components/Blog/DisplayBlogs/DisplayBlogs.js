@@ -9,11 +9,9 @@ import { useContext } from "react";
 import { AdminContext } from "../../../Merkurial/store/Context/ADMIN_CONTEXT/admin_context";
 const { addNew } = BlogSliceActions;
 import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
-import Router from "next/router";
 
 const DisplayBlogs = (props) => {
-  const { theme, styles } = useSelect("THEME");
-  const { bgGlass, textGlass } = theme;
+  const { styles } = useSelect("THEME");
   const { GENERAL } = styles;
   const { transparent } = GENERAL;
   const blogContainerClass = useClass([transparent]);

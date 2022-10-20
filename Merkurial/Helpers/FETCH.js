@@ -11,8 +11,6 @@ const FETCH = async (api_route, method, body, functionThatCalled) => {
       },
       body: m === "GET" ? null : JSON.stringify(b),
     });
-
-    console.log("FETCH RESPONSE: ", response);
     if (
       !response.ok ||
       response.err ||
@@ -20,10 +18,10 @@ const FETCH = async (api_route, method, body, functionThatCalled) => {
       response.status == 400 ||
       response.status == 500
     ) {
-      console.log("IN FETCH RESPONSE: ", response);
       return { err: response };
     }
     const data = await response.json();
+    console.log("Enjoy The Blogs");
     return data;
   } catch (err) {
     console.log(

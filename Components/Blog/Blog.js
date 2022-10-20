@@ -4,7 +4,7 @@ import { useClass, useSelect } from "../../Merkurial/hooks/usehooks";
 const Blog = (props) => {
   const { theme, styles } = useSelect("THEME");
   const { bgGlass, textGlass } = theme;
-  const { DIVS, BORDERS, GENERAL, BUTTON } = styles;
+  const { GENERAL } = styles;
   const { transparent } = GENERAL;
 
   const classes = useClass([bgGlass, textGlass, transparent]);

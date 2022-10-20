@@ -35,7 +35,7 @@ export const RETREIVE_FROM_LOCAL_STORAGE = (itemName) => {
 export const REMOVE_FROM_LOCAL_STORAGE = (itemName) => {
   try {
     localStorage.removeItem(itemName);
-    console.log(`${itemName} removed from localStorage`);
+    // console.log(`${itemName} removed from localStorage`);
   } catch (err) {
     console.error(
       `there was a problem removing ${itemName} from local storage.`,
