@@ -2,9 +2,9 @@ import css from "./BlogCard.module.css";
 import TextBox from "../../UI/Text/TextBox";
 import { useSelect, useClass } from "../../../Merkurial/hooks/usehooks";
 import { useRouter } from "next/router";
-import ROUTIFY from "../../../Merkurial/Helpers/ROUTIFY";
 import { SAVE_TO_LOCAL_STORAGE } from "../../../Merkurial/API_STORAGE/STORAGe/HANDLE_STORAGE";
 import { LINKIFY } from "../../../Merkurial/store/Redux/NavSlice/LINKIFY";
+import { useDispatch } from "react-redux";
 
 const BlogCard = (props) => {
   const transparentCardClass = useClass([css.blogCard, props.className]);
@@ -47,9 +47,10 @@ const BackSide = (props) => {
 // const OuterBlogCard = () =>
 
 const FlipCard = (props) => {
-  const { theme, styles, animations } = useSelect("THEME");
+  const dispatch = useDispatch();
+  const { theme, animations } = useSelect("THEME");
   const { FLIPCARD } = animations;
-  const { bgGlass, text } = theme;
+  const { text } = theme;
   const { back, front, flipY180, inner3D, threeD, card } = FLIPCARD;
   const backSide = useClass([back, text]);
   const frontSide = useClass([front, text]);
@@ -88,6 +89,7 @@ const FlipCard = (props) => {
       },
     };
     const storageData = { ...query, link: link };
+
     SAVE_TO_LOCAL_STORAGE(storageData, "latestBlog");
 
     router.push(routerParams, link);

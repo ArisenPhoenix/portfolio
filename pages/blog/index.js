@@ -16,35 +16,42 @@ import { AdminContext } from "../../Merkurial/store/Context/ADMIN_CONTEXT/admin_
 import { getBlogs } from "../../Components/Blog/helpers";
 
 const BlogPage = () => {
-  const dispatch = useDispatch();
-  const { updateBlogs } = BlogSliceActions;
-
   const router = useRouter();
   const adminCtx = useContext(AdminContext);
   const admin = adminCtx.admin;
-
+  const dispatch = useDispatch();
   const [blogs, setBlogs] = useState([]);
-  const classes = useClass([css.blogPage]);
-  const hasLoaded = false;
   const [isRunning, setIsRunning] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const { updateBlogs } = BlogSliceActions;
 
-  const setTimeOutCallBack = async (timer) => {
-    const newBlogData = await getBlogs(
-      getBlogsREQS,
-      "FROM setTimeOutCallBack",
-      "blogs"
-    );
-    console.log("NEW BLOG DATA: ", newBlogData);
-    return clearTimeout(timer);
+  const dispatchBlogs = (allBlogs) => {
+    dispatch(updateBlogs(allBlogs));
+  };
+  const getBlogsREQS = {
+    setBlogs: setBlogs,
+    setErrorMessage: setErrorMessage,
+    updateBlogs: dispatchBlogs,
   };
 
+  const classes = useClass([css.blogPage]);
+
+  // const setTimeOutCallBack = async (timer) => {
+  //   const newBlogData = await getBlogs(
+  //     getBlogsREQS,
+  //     "FROM setTimeOutCallBack",
+  //     "blogs"
+  //   );
+  //   return clearTimeout(timer);
+  // };
+
   // USE TIMER TO DECIDE IF BLOG POSTS SHOULD BE UPDATED OR NOT
-  useSetTimeOut(
+  const timeLeft = useSetTimeOut(
     {
       timerName: "updateBlogs",
-      startTimeMS: 60000,
-      callBackPointer: setTimeOutCallBack,
+      startTimeMS: 60000000,
+      callBackPointer: null,
       running: isRunning,
       setRunning: setIsRunning,
     },
@@ -52,34 +59,36 @@ const BlogPage = () => {
   );
 
   useEffect(() => {
-    const dispatchBlogs = (allBlogs) => {
-      dispatch(updateBlogs(allBlogs));
-    };
-    const getBlogsREQS = {
-      setBlogs: setBlogs,
-      setErrorMessage: setErrorMessage,
-      updateBlogs: dispatchBlogs,
-    };
-
-    let loaded = RETREIVE_FROM_LOCAL_STORAGE("hasLoaded");
-    loaded = loaded?.hasLoaded ? loaded.hasLoaded : false;
-
-    if (loaded) {
-      const retreivedBlogs = RETREIVE_FROM_LOCAL_STORAGE("blogs");
-      if (retreivedBlogs === null || retreivedBlogs?.length < 1) {
-        getBlogs(getBlogsREQS, "FROM LOADED = TRUE");
+    if (!isLoaded) {
+      setIsLoaded(true);
+      console.log("IN ASYNC FUNCTION !ISLOADED");
+      const allBlogs = getBlogs(getBlogsREQS, "FROM LOADED = TRUE");
+      if (!allBlogs.err) {
         setIsRunning(true);
-      } else {
-        REMOVE_FROM_LOCAL_STORAGE("blogs");
-        setBlogs(retreivedBlogs);
       }
     } else if (!isRunning) {
-      getBlogs(getBlogsREQS, "FROM LOADED = FALSE");
+      const retreivedBlogs = RETREIVE_FROM_LOCAL_STORAGE("blogs");
+      if (retreivedBlogs === null || retreivedBlogs?.length < 1) {
+        console.log("IN ASYNC FUNCTION DATA NOT THERE");
+        const allBlogs = getBlogs(getBlogsREQS, "FROM LOADED = TRUE");
+        if (!allBlogs.err) {
+          setIsRunning(true);
+        }
+      } else {
+        console.log("SETTING BLOGS TO LOCALLY STORED ONES");
+        setBlogs(retreivedBlogs);
+      }
       setIsRunning(true);
     }
-
-    SAVE_TO_LOCAL_STORAGE({ hasLoaded: true }, "hasLoaded");
-  }, [setIsRunning, isRunning, dispatch]);
+  }, [
+    setIsRunning,
+    isRunning,
+    getBlogsREQS,
+    setBlogs,
+    timeLeft,
+    isLoaded,
+    setIsLoaded,
+  ]);
 
   const handleClick = () => {
     router.push("/blog/addNew");
@@ -99,12 +108,10 @@ const BlogPage = () => {
 
       {blogs.length > 0 ? (
         <Blog blogs={blogs} />
-      ) : !hasLoaded ? (
-        <h1>Loading...</h1>
       ) : errorMessage ? (
         <h2>{errorMessage}</h2>
       ) : (
-        <h1>Loading</h1>
+        <h1>Loading...</h1>
       )}
     </div>
   );

@@ -26,8 +26,22 @@ const callBack = async (callBackPointer) => {
 };
 
 const useSetTimeOut = (timerObj, save = false) => {
-  const { timerName, startTimeMS, callBackPointer, running, setRunning } =
-    timerObj;
+  const {
+    timerName,
+    startTimeMS = 60000,
+    callBackPointer = null,
+    running = false,
+    setRunning = () => {},
+  } = timerObj;
+
+  const resetTimer = () => {
+    callBackPointer && callBack(callBackPointer);
+    // Reset Timer
+    setTimeLeft(startTimeMS);
+    setRunning(false);
+    setPreviousTime(false);
+    save && REMOVE_FROM_LOCAL_STORAGE(timerName);
+  };
 
   if (!timerName) {
     throw Error("You Must Identify This Timer To Use it.");
@@ -41,15 +55,7 @@ const useSetTimeOut = (timerObj, save = false) => {
     // Set & Reset Timer
     if (timeLeft <= 0) {
       // Execute Callback
-      callBackPointer && callBack(callBackPointer);
-
-      // Reset Timer
-      setTimeLeft(startTimeMS);
-      setRunning(false);
-      setPreviousTime(false);
-
-      save && REMOVE_FROM_LOCAL_STORAGE(timerName);
-      console.log("REMOVED FROM LOCAL STORAGE");
+      resetTimer();
     }
 
     if (save) {
@@ -75,8 +81,12 @@ const useSetTimeOut = (timerObj, save = false) => {
   useEffect(() => {
     // UPDATE TIME
     if (running) {
-      timerFunction(timeLeft, setTimeLeft);
-      save && SAVE_TO_LOCAL_STORAGE(timeLeft, timerName);
+      if (timeLeft <= 0) {
+        resetTimer();
+      } else {
+        timerFunction(timeLeft, setTimeLeft);
+        save && SAVE_TO_LOCAL_STORAGE(timeLeft, timerName);
+      }
     }
 
     console.log("TIME REMAINING: ", timeLeft);
