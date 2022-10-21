@@ -26,9 +26,6 @@ const BlogPage = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const { updateBlogs } = BlogSliceActions;
 
-  const dispatchBlogs = (allBlogs) => {
-    dispatch(updateBlogs(allBlogs));
-  };
   // const getBlogsREQS = () => {
   //   return ;
   // };
@@ -48,6 +45,9 @@ const BlogPage = () => {
   );
 
   useEffect(() => {
+    const dispatchBlogs = (allBlogs) => {
+      dispatch(updateBlogs(allBlogs));
+    };
     const blogReqs = {
       setBlogs: setBlogs,
       setErrorMessage: setErrorMessage,
