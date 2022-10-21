@@ -75,7 +75,16 @@ const BlogPage = () => {
       }
       setIsRunning(true);
     }
-  }, [setIsRunning, isRunning, setBlogs, timeLeft, isLoaded, setIsLoaded]);
+  }, [
+    setIsRunning,
+    isRunning,
+    setBlogs,
+    timeLeft,
+    isLoaded,
+    setIsLoaded,
+    dispatch,
+    updateBlogs,
+  ]);
 
   const handleClick = () => {
     router.push("/blog/addNew");
