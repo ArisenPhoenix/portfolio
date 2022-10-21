@@ -29,10 +29,12 @@ const BlogPage = () => {
   const dispatchBlogs = (allBlogs) => {
     dispatch(updateBlogs(allBlogs));
   };
-  const getBlogsREQS = {
-    setBlogs: setBlogs,
-    setErrorMessage: setErrorMessage,
-    updateBlogs: dispatchBlogs,
+  const getBlogsREQS = () => {
+    return {
+      setBlogs: setBlogs,
+      setErrorMessage: setErrorMessage,
+      updateBlogs: dispatchBlogs,
+    };
   };
 
   const classes = useClass([css.blogPage]);
