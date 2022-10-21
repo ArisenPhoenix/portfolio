@@ -79,7 +79,7 @@ const BlogPage = () => {
     }
 
     SAVE_TO_LOCAL_STORAGE({ hasLoaded: true }, "hasLoaded");
-  }, [setIsRunning, isRunning]);
+  }, [setIsRunning, isRunning, dispatch]);
 
   const handleClick = () => {
     router.push("/blog/addNew");
