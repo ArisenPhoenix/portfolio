@@ -29,24 +29,11 @@ const BlogPage = () => {
   const dispatchBlogs = (allBlogs) => {
     dispatch(updateBlogs(allBlogs));
   };
-  const getBlogsREQS = () => {
-    return {
-      setBlogs: setBlogs,
-      setErrorMessage: setErrorMessage,
-      updateBlogs: dispatchBlogs,
-    };
-  };
+  // const getBlogsREQS = () => {
+  //   return ;
+  // };
 
   const classes = useClass([css.blogPage]);
-
-  // const setTimeOutCallBack = async (timer) => {
-  //   const newBlogData = await getBlogs(
-  //     getBlogsREQS,
-  //     "FROM setTimeOutCallBack",
-  //     "blogs"
-  //   );
-  //   return clearTimeout(timer);
-  // };
 
   // USE TIMER TO DECIDE IF BLOG POSTS SHOULD BE UPDATED OR NOT
   const timeLeft = useSetTimeOut(
@@ -61,10 +48,16 @@ const BlogPage = () => {
   );
 
   useEffect(() => {
+    const blogReqs = {
+      setBlogs: setBlogs,
+      setErrorMessage: setErrorMessage,
+      updateBlogs: dispatchBlogs,
+    };
     if (!isLoaded) {
       setIsLoaded(true);
       console.log("IN ASYNC FUNCTION !ISLOADED");
-      const allBlogs = getBlogs(getBlogsREQS, "FROM LOADED = TRUE");
+
+      const allBlogs = getBlogs(blogReqs, "FROM LOADED = TRUE");
       if (!allBlogs.err) {
         setIsRunning(true);
       }
@@ -72,7 +65,7 @@ const BlogPage = () => {
       const retreivedBlogs = RETREIVE_FROM_LOCAL_STORAGE("blogs");
       if (retreivedBlogs === null || retreivedBlogs?.length < 1) {
         console.log("IN ASYNC FUNCTION DATA NOT THERE");
-        const allBlogs = getBlogs(getBlogsREQS, "FROM LOADED = TRUE");
+        const allBlogs = getBlogs(blogReqs, "FROM LOADED = TRUE");
         if (!allBlogs.err) {
           setIsRunning(true);
         }
@@ -82,15 +75,7 @@ const BlogPage = () => {
       }
       setIsRunning(true);
     }
-  }, [
-    setIsRunning,
-    isRunning,
-    getBlogsREQS,
-    setBlogs,
-    timeLeft,
-    isLoaded,
-    setIsLoaded,
-  ]);
+  }, [setIsRunning, isRunning, setBlogs, timeLeft, isLoaded, setIsLoaded]);
 
   const handleClick = () => {
     router.push("/blog/addNew");
