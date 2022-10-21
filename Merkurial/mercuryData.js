@@ -1,5 +1,5 @@
 import IMPORT_ALL from "../Helpers/Nav/General/importAll";
-import { Blogs } from "../DummyData/Blogs";
+// import { Blogs } from "../DummyData/Blogs";
 
 export const NAV_DATA = () => {
   const leftNavs = [{ name: "Projects" }, { name: "Contact" }];
@@ -60,10 +60,6 @@ export const PROJECT_DATA = () => {
   ];
 
   return project_data;
-};
-
-export const BLOG_DATA = () => {
-  return Blogs();
 };
 
 export const THEMES = () => {

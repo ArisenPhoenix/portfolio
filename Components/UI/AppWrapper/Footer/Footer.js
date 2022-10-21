@@ -6,7 +6,7 @@ import { AdminContext } from "../../../../Merkurial/store/Context/ADMIN_CONTEXT/
 
 const Footer = (props) => {
   const adminCtx = useContext(AdminContext);
-  const LOGOUT = adminCtx.logout;
+  const LOGOUT = adminCtx.LOGOUT;
   const isAdmin = adminCtx.admin;
   const { theme, styles } = useSelect("THEME");
   const { bg, text } = theme;

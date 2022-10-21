@@ -24,7 +24,7 @@ const AdminLogin = () => {
   const admin = adminCtx.admin;
 
   const VALIDATE = adminCtx.validate;
-  const LOGOUT = adminCtx.logout;
+  const LOGOUT = adminCtx.LOGOUT;
 
   const handleLogout = () => {
     LOGOUT();
@@ -115,11 +115,7 @@ const AdminLogin = () => {
           }
         />
         {admin && (
-          <Button
-            text="Logout"
-            onClick={handleLogout}
-            divClass={largeYMargin}
-          />
+          <Button text="Logout" onClick={LOGOUT} divClass={largeYMargin} />
         )}
         <form className={formClass} onSubmit={handleSubmit}>
           <Label />

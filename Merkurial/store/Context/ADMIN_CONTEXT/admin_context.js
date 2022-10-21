@@ -1,5 +1,8 @@
-import { createContext, useState } from "react";
-import { REMOVE_FROM_LOCAL_STORAGE } from "../../../API_STORAGE/STORAGe/HANDLE_STORAGE";
+import { createContext, useEffect, useState } from "react";
+import {
+  REMOVE_FROM_LOCAL_STORAGE,
+  RETREIVE_FROM_LOCAL_STORAGE,
+} from "../../../API_STORAGE/STORAGe/HANDLE_STORAGE";
 
 export const AdminContext = createContext({
   admin: false,
@@ -7,8 +10,10 @@ export const AdminContext = createContext({
   firstName: "",
   lastName: "",
   pin: "",
+  message: "",
   validate: () => {},
-  logout: () => {},
+  LOGOUT: () => {},
+  LOGIN: () => {},
 });
 
 const AdminContextProvider = (props) => {
@@ -18,6 +23,7 @@ const AdminContextProvider = (props) => {
     firstName: "",
     lastName: "",
     pin: "",
+    message: null,
   };
   const [creds, setCredentials] = useState(defaultState);
 
@@ -49,6 +55,15 @@ const AdminContextProvider = (props) => {
     return r;
   };
 
+  useEffect(() => {
+    if (!creds.admin) {
+      const credentials = RETREIVE_FROM_LOCAL_STORAGE("admin");
+      if (credentials?.admin) {
+        setCredentials(credentials);
+      }
+    }
+  }, []);
+
   const adminContextValue = {
     admin: creds.admin,
     email: creds.email,
@@ -57,7 +72,7 @@ const AdminContextProvider = (props) => {
     pin: creds.pin,
     message: creds.message,
     validate: GET_CREDENTIALS,
-    logout: LOGOUT_ADMIN,
+    LOGOUT: LOGOUT_ADMIN,
     LOGIN: LOGIN,
   };
 

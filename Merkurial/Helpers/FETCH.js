@@ -1,4 +1,10 @@
-const FETCH = async (api_route, method, body, functionThatCalled) => {
+const FETCH = async (
+  api_route,
+  method,
+  body,
+  functionThatCalled,
+  nameOfData
+) => {
   // functionThatCalled &&
   //   console.log(`${functionThatCalled} is fetching using the ${method} method`);
   const m = method.toUpperCase();
@@ -21,7 +27,7 @@ const FETCH = async (api_route, method, body, functionThatCalled) => {
       return { err: response };
     }
     const data = await response.json();
-    console.log("Enjoy The Blogs");
+    nameOfData && console.log(`Enjoy the ${nameOfData}`);
     return data;
   } catch (err) {
     console.log(

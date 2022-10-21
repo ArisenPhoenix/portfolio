@@ -1,16 +1,22 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Button from "../../UI/Button/Button";
 import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
 import FETCH from "../../../Merkurial/Helpers/FETCH";
 import { BlogSliceActions } from "../../../Merkurial/store/Redux/Store";
 import InputGroup from "../../UI/InputGroup/InputGroup";
+import { useDispatch } from "react-redux";
+import { AdminContext } from "../../../Merkurial/store/Context/ADMIN_CONTEXT/admin_context";
 
 const BlogForm = (props) => {
-  const [name, setName] = useState("");
+  const adminCtx = useContext(AdminContext);
+  const isAdmin = adminCtx.admin;
+  const dispatch = useDispatch();
+  const [message, setMessage] = useState(null);
+  const [name, setName] = useState(isAdmin ? "Brandon Marcure" : "");
   const [title, setTitle] = useState("");
   const [blogText, setBlogText] = useState("");
 
-  const { addBlog } = BlogSliceActions;
+  const { updateBlogs } = BlogSliceActions;
 
   const { theme, styles } = useSelect("THEME");
   const { bg, text } = theme;
@@ -66,21 +72,40 @@ const BlogForm = (props) => {
   };
 
   const handleSubmit = async (e) => {
+    setMessage("Posting To The Database");
+    e.preventDefault();
     const data = {
       author: name,
       title: title,
       body: blogText,
     };
 
-    addBlog(data);
-    e.preventDefault();
     const info = await FETCH("/api/blogs", "POST", data, "ADD BLOG FORM");
+
+    if (info.acknowledged) {
+      dispatch(updateBlogs({ payload: data }));
+      const updatedBlogs = await FETCH("/api/blogs", "GET");
+      console.log("UPDATED BLOGS: ", updatedBlogs);
+      if (Array.isArray(updatedBlogs)) {
+        setMessage("Blog Post Successfully Added");
+        dispatch(updateBlogs(updatedBlogs));
+      } else {
+        setMessage("Phoenix Down! Phoenix Down!");
+      }
+    }
+    setName(isAdmin ? "Brandon Marcure" : "");
+    setTitle("");
+    setBlogText("");
+    setTimeout(() => {
+      setMessage(null);
+    }, 5000);
   };
 
   return (
     <div className={mainDivClass}>
       <form onSubmit={handleSubmit} className={formClass}>
         <div className={inputGroupDivClass}>
+          {message && <h1>{message}</h1>}
           <InputGroup
             label={{ text: "Name" }}
             labelClass={labelClasses}

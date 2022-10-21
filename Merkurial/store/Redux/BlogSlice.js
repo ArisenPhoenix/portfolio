@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { BlogSlicePrep } from "../../mercuryConfig";
-const blogs = BlogSlicePrep();
 
 const initialState = {
-  blogs: blogs,
+  blogs: [],
   individual: {
     body: "",
     author: "",
@@ -11,23 +9,24 @@ const initialState = {
     title: "",
     link: "",
   },
-  timeToUpdate: 6000,
+  timeToUpdate: 5000,
 };
 const BlogSlice = createSlice({
-  name: "blog",
+  name: "BLOGS",
   initialState: initialState,
   reducers: {
-    addNew: () => {
-      return "/blog/addNew";
-    },
     addBlog: (state, action) => {
       state.blogs + action.payload;
     },
-    dynamic: (state, action) => {
+    updateDynamic: (state, action) => {
       state.individual = action.payload;
+    },
+    updateBlogs: (state, action) => {
+      // console.log("ACTION.PAYLOAD: ", action.payload);
+      state.blogs = action.payload;
     },
   },
 });
 
 export default BlogSlice;
-export const { addNew } = BlogSlice.actions;
+export const { addNew, updateBlogs } = BlogSlice.actions;
