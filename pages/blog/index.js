@@ -13,15 +13,12 @@ import {
 } from "../../Merkurial/API_STORAGE/STORAGe/HANDLE_STORAGE";
 import useSetTimeOut from "../../Merkurial/hooks/useSetTimeOut";
 import { AdminContext } from "../../Merkurial/store/Context/ADMIN_CONTEXT/admin_context";
-import { getBlogs } from "./helpers";
+import { getBlogs } from "../../Components/Blog/helpers";
 
 const BlogPage = () => {
   const dispatch = useDispatch();
   const { updateBlogs } = BlogSliceActions;
 
-  const dispatchBlogs = (allBlogs) => {
-    dispatch(updateBlogs(allBlogs));
-  };
   const router = useRouter();
   const adminCtx = useContext(AdminContext);
   const admin = adminCtx.admin;
@@ -55,6 +52,9 @@ const BlogPage = () => {
   );
 
   useEffect(() => {
+    const dispatchBlogs = (allBlogs) => {
+      dispatch(updateBlogs(allBlogs));
+    };
     const getBlogsREQS = {
       setBlogs: setBlogs,
       setErrorMessage: setErrorMessage,
