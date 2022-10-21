@@ -6,6 +6,7 @@
   background-image: url("../../media/tree.jpg");
   background-attachment: scroll;
   background-position: center;
+  min-height: 100vh;
 }
 
 .color {

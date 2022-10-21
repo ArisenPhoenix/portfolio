@@ -6,11 +6,7 @@ import { useState, useEffect, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { BlogSliceActions } from "../../Merkurial/store/Redux/Store";
-import {
-  SAVE_TO_LOCAL_STORAGE,
-  RETREIVE_FROM_LOCAL_STORAGE,
-  REMOVE_FROM_LOCAL_STORAGE,
-} from "../../Merkurial/API_STORAGE/STORAGe/HANDLE_STORAGE";
+import { RETREIVE_FROM_LOCAL_STORAGE } from "../../Merkurial/API_STORAGE/STORAGe/HANDLE_STORAGE";
 import useSetTimeOut from "../../Merkurial/hooks/useSetTimeOut";
 import { AdminContext } from "../../Merkurial/store/Context/ADMIN_CONTEXT/admin_context";
 import { getBlogs } from "../../Components/Blog/helpers";
@@ -25,18 +21,13 @@ const BlogPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const { updateBlogs } = BlogSliceActions;
-
-  // const getBlogsREQS = () => {
-  //   return ;
-  // };
-
   const classes = useClass([css.blogPage]);
 
-  // USE TIMER TO DECIDE IF BLOG POSTS SHOULD BE UPDATED OR NOT
   const timeLeft = useSetTimeOut(
+    // USE TIMER TO DECIDE IF BLOG POSTS SHOULD BE UPDATED OR NOT
     {
       timerName: "updateBlogs",
-      startTimeMS: 60000000,
+      startTimeMS: 60000,
       callBackPointer: null,
       running: isRunning,
       setRunning: setIsRunning,
