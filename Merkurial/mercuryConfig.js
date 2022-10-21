@@ -1,5 +1,5 @@
 import { SUPER_LINKIFY } from "./store/Redux/NavSlice/LINKIFY";
-import { NAV_DATA, PROJECT_DATA, BLOG_DATA } from "../Merkurial/mercuryData";
+import { NAV_DATA, PROJECT_DATA } from "../Merkurial/mercuryData";
 
 export const NavSlicePrep = () => {
   const links = NAV_DATA();
@@ -19,9 +19,4 @@ export const NavSlicePrep = () => {
 export const ProjectSlicePrep = () => {
   const projects = PROJECT_DATA();
   return projects;
-};
-
-export const BlogSlicePrep = () => {
-  const blogs = BLOG_DATA();
-  return blogs;
 };

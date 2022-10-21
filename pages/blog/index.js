@@ -17,13 +17,14 @@ import { getBlogs } from "./helpers";
 
 const BlogPage = () => {
   const dispatch = useDispatch();
+  const { updateBlogs } = BlogSliceActions;
+
   const dispatchBlogs = (allBlogs) => {
     dispatch(updateBlogs(allBlogs));
   };
   const router = useRouter();
   const adminCtx = useContext(AdminContext);
   const admin = adminCtx.admin;
-  const { updateBlogs } = BlogSliceActions;
 
   const [blogs, setBlogs] = useState([]);
   const classes = useClass([css.blogPage]);
@@ -41,12 +42,6 @@ const BlogPage = () => {
     return clearTimeout(timer);
   };
 
-  const getBlogsREQS = {
-    setBlogs: setBlogs,
-    setErrorMessage: setErrorMessage,
-    updateBlogs: dispatchBlogs,
-  };
-
   // USE TIMER TO DECIDE IF BLOG POSTS SHOULD BE UPDATED OR NOT
   useSetTimeOut(
     {
@@ -60,6 +55,12 @@ const BlogPage = () => {
   );
 
   useEffect(() => {
+    const getBlogsREQS = {
+      setBlogs: setBlogs,
+      setErrorMessage: setErrorMessage,
+      updateBlogs: dispatchBlogs,
+    };
+
     let loaded = RETREIVE_FROM_LOCAL_STORAGE("hasLoaded");
     loaded = loaded?.hasLoaded ? loaded.hasLoaded : false;
 
