@@ -13,7 +13,6 @@ const Landing = () => {
   return (
     <div className={mainDiv}>
       <div>
-        <h1>Landing</h1>
         <Skills />
       </div>
       <Credits className={center} />

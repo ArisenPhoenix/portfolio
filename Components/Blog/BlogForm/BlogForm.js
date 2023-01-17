@@ -2,10 +2,10 @@ import { useState, useContext } from "react";
 import Button from "../../UI/Button/Button";
 import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
 import FETCH from "../../../Merkurial/Helpers/FETCH";
-import { BlogSliceActions } from "../../../Merkurial/store/Redux/Store";
+import { BlogSliceActions } from "../../../store/Redux/Store";
 import InputGroup from "../../UI/InputGroup/InputGroup";
 import { useDispatch } from "react-redux";
-import { AdminContext } from "../../../Merkurial/store/Context/ADMIN_CONTEXT/admin_context";
+import { AdminContext } from "../../../store/Context/ADMIN_CONTEXT/admin_context";
 
 const BlogForm = (props) => {
   const adminCtx = useContext(AdminContext);

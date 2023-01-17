@@ -5,11 +5,13 @@ import { useClass } from "../../Merkurial/hooks/usehooks";
 import { useState, useEffect, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { BlogSliceActions } from "../../Merkurial/store/Redux/Store";
-import { RETREIVE_FROM_LOCAL_STORAGE } from "../../Merkurial/API_STORAGE/STORAGe/HANDLE_STORAGE";
+import { BlogSliceActions } from "../../store/Redux/Store";
+import { RETREIVE_FROM_LOCAL_STORAGE } from "../../Merkurial/API_STORAGE/STORAGE/HANDLE_STORAGE";
 import useSetTimeOut from "../../Merkurial/hooks/useSetTimeOut";
-import { AdminContext } from "../../Merkurial/store/Context/ADMIN_CONTEXT/admin_context";
+import { AdminContext } from "../../store/Context/ADMIN_CONTEXT/admin_context";
 import { getBlogs } from "../../Components/Blog/helpers";
+import LoadingScreen from "../../Merkurial/Components/UI/LoadingScreen/LoadingScreen";
+import Heading from "../../Components/UI/Text/Heading";
 
 const BlogPage = () => {
   const router = useRouter();
@@ -46,7 +48,7 @@ const BlogPage = () => {
     };
     if (!isLoaded) {
       setIsLoaded(true);
-      console.log("IN ASYNC FUNCTION !ISLOADED");
+      // console.log("IN ASYNC FUNCTION !ISLOADED");
 
       const allBlogs = getBlogs(blogReqs, "FROM LOADED = TRUE");
       if (!allBlogs.err) {
@@ -55,13 +57,13 @@ const BlogPage = () => {
     } else if (!isRunning) {
       const retreivedBlogs = RETREIVE_FROM_LOCAL_STORAGE("blogs");
       if (retreivedBlogs === null || retreivedBlogs?.length < 1) {
-        console.log("IN ASYNC FUNCTION DATA NOT THERE");
+        // console.log("IN ASYNC FUNCTION DATA NOT THERE");
         const allBlogs = getBlogs(blogReqs, "FROM LOADED = TRUE");
         if (!allBlogs.err) {
           setIsRunning(true);
         }
       } else {
-        console.log("SETTING BLOGS TO LOCALLY STORED ONES");
+        // console.log("SETTING BLOGS TO LOCALLY STORED ONES");
         setBlogs(retreivedBlogs);
       }
       setIsRunning(true);
@@ -91,14 +93,17 @@ const BlogPage = () => {
           onClick={handleClick}
         />
       )}
-      <h1>BlogPage</h1>
+      <Heading text="Blog Page" />
 
       {blogs.length > 0 ? (
         <Blog blogs={blogs} />
       ) : errorMessage ? (
         <h2>{errorMessage}</h2>
       ) : (
-        <h1>Loading...</h1>
+        <>
+          <Heading text="Loading..." />
+          <LoadingScreen />
+        </>
       )}
     </div>
   );

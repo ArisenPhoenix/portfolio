@@ -1,22 +1,30 @@
-import { SUPER_LINKIFY } from "./store/Redux/NavSlice/LINKIFY";
-import { NAV_DATA, PROJECT_DATA } from "../Merkurial/mercuryData";
+import IMPORT_ALL from "../Helpers/Nav/General/importAll";
 
-export const NavSlicePrep = () => {
-  const links = NAV_DATA();
-  const leftNavs = SUPER_LINKIFY(links.leftNavs);
-  const rightNavs = SUPER_LINKIFY(links.rightNavs);
-
-  const navData = {
-    leftNavs: leftNavs,
-    rightNavs: rightNavs,
-    currentPage: null,
-    dropDowns: links.dropDowns,
+export const THEMES = () => {
+  const themes = {
+    default: "",
+    primary: {
+      dark: "",
+      light: "",
+      highContrast: "",
+    },
+    secondary: {
+      ethereal: "",
+      kiddish: "",
+      modern: "",
+      professional: "",
+      holy: "",
+    },
+    design: {
+      angular: "",
+      bubbly: "",
+      rounded: "",
+      natural: "",
+    },
+    accesibility: {
+      red_green_blind: "",
+    },
   };
 
-  return navData;
-};
-
-export const ProjectSlicePrep = () => {
-  const projects = PROJECT_DATA();
-  return projects;
+  return themes;
 };

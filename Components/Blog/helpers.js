@@ -1,5 +1,5 @@
 import FETCH from "../../Merkurial/Helpers/FETCH";
-import { SAVE_TO_LOCAL_STORAGE } from "../../Merkurial/API_STORAGE/STORAGe/HANDLE_STORAGE";
+import { SAVE_TO_LOCAL_STORAGE } from "../../Merkurial/API_STORAGE/STORAGE/HANDLE_STORAGE";
 
 export const getBlogs = async (functionObj, fromWhere) => {
   const { setBlogs, setErrorMessage, updateBlogs } = functionObj;

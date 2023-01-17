@@ -1,0 +1,26 @@
+.dropDownContainer {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.navItemDiv {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.notDropDownContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.dropDown {
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+}

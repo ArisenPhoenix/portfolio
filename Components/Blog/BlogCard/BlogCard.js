@@ -2,8 +2,8 @@ import css from "./BlogCard.module.css";
 import TextBox from "../../UI/Text/TextBox";
 import { useSelect, useClass } from "../../../Merkurial/hooks/usehooks";
 import { useRouter } from "next/router";
-import { SAVE_TO_LOCAL_STORAGE } from "../../../Merkurial/API_STORAGE/STORAGe/HANDLE_STORAGE";
-import { LINKIFY } from "../../../Merkurial/store/Redux/NavSlice/LINKIFY";
+import { SAVE_TO_LOCAL_STORAGE } from "../../../Merkurial/API_STORAGE/STORAGE/HANDLE_STORAGE";
+import { LINKIFY } from "../../../Merkurial/Helpers/Text/Linkify";
 import { useDispatch } from "react-redux";
 
 const BlogCard = (props) => {

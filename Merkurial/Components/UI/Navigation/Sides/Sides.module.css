@@ -1,0 +1,12 @@
+.right {
+  display: flex;
+  align-content: flex-end;
+  float: right;
+  align-self: flex-end;
+}
+
+.left {
+  display: flex;
+  align-content: flex-start;
+  align-self: flex-start;
+}

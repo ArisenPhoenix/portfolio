@@ -25,7 +25,7 @@ const Project = (props) => {
   return (
     <ProjectCard className={cardClass}>
       <div className={classes}>
-        <h4 className={center}>{name}</h4>
+        <h1 className={center}>{name}</h1>
         <Card className={css.carousel}>
           <DisplayImages images={images} />
         </Card>

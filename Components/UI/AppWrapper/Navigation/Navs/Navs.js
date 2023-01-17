@@ -1,7 +1,6 @@
 import css from "./Navs.module.css";
 import { useRouter } from "next/router";
 import Nav from "../Navs/Nav/Nav";
-// import { useSelect } from "../../../../../Merkurial/hooks/usehooks";
 
 const NavItems = (props) => {
   const router = useRouter();

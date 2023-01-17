@@ -11,12 +11,10 @@ export const MOVE_THROUGH_STATE_OBJECT_TREE = (
 ) => {
   // currentState is the base state
   const info = COMBINE_ELEMENTS(currentSelector, list_of_slices);
-  console.log("COMBINE ELEMENTS IN MOVE info: ", info);
   return info;
 };
 
 export const DIG_ATTRIBUTES_OUT = (currentState, list_of_selections) => {
-  // currentState is the Starting POINT
   const info = list_of_selections.reduce((prev, currentAttr, index) => {
     prev = prev[currentAttr];
     return prev;

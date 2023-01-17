@@ -1,0 +1,36 @@
+.formDiv {
+  width: 100%;
+  text-align: center;
+  margin-top: 5%;
+}
+
+.form {
+  width: 100%;
+  margin: auto;
+}
+
+.input {
+  width: 100%;
+  margin: auto;
+}
+
+.label {
+  width: 80%;
+  margin: auto;
+}
+
+.inputLabel {
+  width: 80%;
+  margin: auto;
+}
+
+.timeSpan {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.timeInput {
+  width: 80%;
+}

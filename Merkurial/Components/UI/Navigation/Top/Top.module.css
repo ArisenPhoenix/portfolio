@@ -1,0 +1,21 @@
+.topContainer {
+  width: 100%;
+  height: 8% !important;
+  background-color: black;
+  color: white;
+  padding-left: 2%;
+  padding-right: 2%;
+  align-items: center;
+}
+
+.homeContainer {
+  width: auto;
+  display: flex;
+  align-self: flex-start;
+  justify-content: left;
+}
+
+/* .dropDown {
+  display: flex;
+  justify-content: flex-end;
+} */

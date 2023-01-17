@@ -3,7 +3,7 @@ import {
   SAVE_TO_LOCAL_STORAGE,
   RETREIVE_FROM_LOCAL_STORAGE,
   REMOVE_FROM_LOCAL_STORAGE,
-} from "../API_STORAGE/STORAGe/HANDLE_STORAGE";
+} from "../API_STORAGE/STORAGE/HANDLE_STORAGE";
 
 let aTimer;
 
@@ -89,7 +89,7 @@ const useSetTimeOut = (timerObj, save = false) => {
       }
     }
 
-    console.log("TIME REMAINING: ", timeLeft);
+    // console.log("TIME REMAINING: ", timeLeft);
   }, [previousTime, running, timeLeft]);
 
   return timeLeft;

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Table from "../../Table/Table";
 import { useSelect, useClass } from "../../../../Merkurial/hooks/usehooks";
 import { useContext } from "react";
-import { AdminContext } from "../../../../Merkurial/store/Context/ADMIN_CONTEXT/admin_context";
+import { AdminContext } from "../../../../Merkurial/store1/Context/ADMIN_CONTEXT/admin_context";
 
 const Footer = (props) => {
   const adminCtx = useContext(AdminContext);

@@ -4,9 +4,9 @@ import { Col } from "react-bootstrap";
 import { useClass, useSelect } from "../../Merkurial/hooks/usehooks";
 
 const DisplayProjects = (props) => {
-  const { theme, styles } = useSelect("THEME");
+  const { styles } = useSelect("THEME");
   const { GENERAL } = styles;
-  const { wrapSpaceBelow, center } = GENERAL;
+  const { wrapSpaceBelow } = GENERAL;
   const projects = props.projects;
   const classes = useClass([css.col, "px-10", wrapSpaceBelow]);
   return projects.map((project, index) => {

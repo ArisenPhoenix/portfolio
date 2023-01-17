@@ -9,7 +9,7 @@ const Link_ = (props) => {
   const classes = useClass([props.className, css.controls]);
   const aClass = useClass([active]);
   const handleClick = () => {
-    props.onClick(props.text);
+    props.onClick && props.onClick(props.text);
   };
   return (
     <span className={classes} onClick={handleClick}>

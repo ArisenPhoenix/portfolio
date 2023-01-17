@@ -1,0 +1,24 @@
+.navContainerMobile {
+  display: block;
+  position: fixed;
+  left: 2%;
+  right: 2%;
+  z-index: 12;
+  border-color: transparent;
+  border-style: groove;
+}
+
+.navContainer {
+  display: block;
+}
+
+.navButtonsContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttonContainer {
+  /* background-color: brown; */
+  width: 100%;
+  height: 100%;
+}

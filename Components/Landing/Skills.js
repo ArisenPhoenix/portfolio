@@ -30,12 +30,12 @@ const Skills = (props) => {
   const reactGif = currentTheme === "Dark" ? react2Dark : react2;
 
   const logos = [
-    { src: isLoaded ? pythonGif : python, name: "python" },
+    { src: python, name: "python" },
     { src: mongoDB, name: "mongoDB" },
     { src: javaScript, name: "javaScript" },
     { src: nextIcon, name: "next" },
     { src: sql, name: sql },
-    { src: isLoaded ? reactGif : react, name: "react" },
+    { src: react, name: "react" },
   ];
 
   const iconDiv = useClass([centerAll]);
@@ -80,8 +80,8 @@ const Skills = (props) => {
                         ? undefined
                         : "lazy"
                     }
-                    height={`${HEIGHT}px`}
-                    width={`${HEIGHT}px`}
+                    height={`${HEIGHT / 2}px`}
+                    width={`${HEIGHT / 2}px`}
                     priority={
                       image.name === "react" || image.name === "python"
                         ? true

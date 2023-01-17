@@ -3,13 +3,13 @@ import { useSelect, useClass } from "../../Merkurial/hooks/usehooks";
 import Input from "../../Components/UI/Input/Input";
 import Label from "../../Components/UI/Label/Label";
 import Button from "../../Components/UI/Button/Button";
-import { AdminContext } from "../../Merkurial/store/Context/ADMIN_CONTEXT/admin_context";
+import { AdminContext } from "../../store/Context/ADMIN_CONTEXT/admin_context";
 import Heading from "../../Components/UI/Text/Heading";
 import SubHeading from "../../Components/UI/Text/SubHeading";
 import {
   SAVE_TO_LOCAL_STORAGE,
   RETREIVE_FROM_LOCAL_STORAGE,
-} from "../../Merkurial/API_STORAGE/STORAGe/HANDLE_STORAGE";
+} from "../../Merkurial/API_STORAGE/STORAGE/HANDLE_STORAGE";
 
 const AdminLogin = () => {
   const adminCtx = useContext(AdminContext);
@@ -26,10 +26,6 @@ const AdminLogin = () => {
   const VALIDATE = adminCtx.validate;
   const LOGOUT = adminCtx.LOGOUT;
 
-  const handleLogout = () => {
-    LOGOUT();
-  };
-
   useEffect(() => {
     if (!admin) {
       let retreivedAdminData = RETREIVE_FROM_LOCAL_STORAGE("admin");
@@ -42,9 +38,7 @@ const AdminLogin = () => {
   const { theme, styles } = useSelect("THEME");
   const { GENERAL, DIVS, BORDERS } = styles;
   const { centerAll, smallSpaceBelow, largeYMargin, fillWhiteSpace } = GENERAL;
-
   const { bg, text } = theme;
-
   const { largeRound } = BORDERS;
   const { form } = DIVS;
   const formClass = useClass([form, centerAll]);

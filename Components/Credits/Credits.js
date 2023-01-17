@@ -1,4 +1,5 @@
 import Table from "../UI/Table/Table";
+import css from "./Credits.module.css";
 import { useSelect, useClass } from "../../Merkurial/hooks/usehooks";
 
 const Credits = (props) => {
@@ -6,7 +7,8 @@ const Credits = (props) => {
   const { styles } = useSelect("THEME");
   const { COLORS } = styles;
   const { pink, blackText } = COLORS;
-  const linkStyles = useClass([blackText, pink]);
+
+  const linkStyles = useClass([blackText, pink, css.link]);
 
   const iconsLinkData = (
     <a
@@ -18,6 +20,7 @@ const Credits = (props) => {
       Icons8
     </a>
   );
+
   const creditRow = [[{ text: `Icons By: `, credits: [iconsLinkData] }]];
   return (
     <div>
