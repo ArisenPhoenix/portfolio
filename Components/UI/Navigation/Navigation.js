@@ -8,7 +8,8 @@ import Canvas from "../../../Merkurial/Components/UI/Navigation/Canvas/Canvas";
 import BottomNav from "./Footer/BottomNav";
 import { useContext } from "react";
 import { NavContext } from "../../../store/Context/NAV_CONTEXT/nav_context";
-import css from "../../../Merkurial/Components/UI/Navigation/Navigation.module.css";
+import primaryCss from "../../../Merkurial/Components/UI/Navigation/Navigation.module.css";
+import css from "./Navigation.module.css";
 
 const Navigation = (props) => {
   const navCtx = useContext(NavContext);
@@ -29,7 +30,9 @@ const Navigation = (props) => {
   const { styles } = THEME;
   const { BORDERS } = styles;
   const { roundgold } = BORDERS;
-  const wrapperClass = useClass([roundgold, css.navigation]);
+  const wrapperClass = useClass([roundgold, primaryCss.navigation, css.main]);
+  const canvasClass = useClass([roundgold, css.canvas]);
+  const footerClass = useClass([roundgold, css.footer]);
 
   return (
     <div className={wrapperClass}>
@@ -43,8 +46,10 @@ const Navigation = (props) => {
         updateLeftNavs={updateLeftNavs}
         updateCurrentPage={updateCurrentPage}
       />
-      <Canvas isMobile={isMobile}>{props.children}</Canvas>
-      <BottomNav isMobile={isMobile} />
+      <Canvas className={canvasClass} isMobile={isMobile}>
+        {props.children}
+      </Canvas>
+      <BottomNav className={footerClass} isMobile={isMobile} />
     </div>
   );
 };

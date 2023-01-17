@@ -12,13 +12,17 @@
 }
 
 .dateDiv {
-  width: 33%;
+  width: 24%;
   margin: auto;
   background-color: transparent;
   text-align: center;
 }
 
 .buttonDiv {
-  width: 33%;
+  width: 38%;
   margin: auto;
+}
+
+.button {
+  min-width: fit-content !important;
 }

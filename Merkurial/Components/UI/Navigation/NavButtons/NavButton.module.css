@@ -4,6 +4,7 @@
   align-items: center;
   background-color: antiquewhite;
   background-color: brown;
+  z-index: 20;
 }
 
 .navButton {
@@ -12,6 +13,7 @@
   /* background-color: brown; */
   width: 100%;
   height: 100%;
+  z-index: 20;
 }
 
 .navButtonDropped {
@@ -21,4 +23,5 @@
   background-color: brown;
   color: rgb(186, 166, 166);
   font-weight: bold;
+  z-index: 20;
 }

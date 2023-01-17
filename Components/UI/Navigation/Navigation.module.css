@@ -6,3 +6,13 @@
 .buttonDiv {
   background-color: white;
 }
+
+.canvas {
+  height: 100%;
+  border-color: solid rgb(234, 200, 5);
+  border-style: solid;
+}
+
+.main {
+  height: 100%;
+}
