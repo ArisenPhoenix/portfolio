@@ -1,12 +1,14 @@
 .main {
   background-color: white;
   border-radius: 8px;
+  z-index: 22;
 }
 
 .svg {
   height: 3rem;
   width: 4rem;
   color: red;
+  z-index: 22;
 }
 
 .divClass {
@@ -16,4 +18,5 @@
   width: 4rem;
   background-color: red;
   color: red;
+  z-index: 20;
 }

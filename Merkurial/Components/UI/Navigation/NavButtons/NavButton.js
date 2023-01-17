@@ -11,7 +11,6 @@ const NavButton = (props) => {
   ]);
   const route = (e) => {
     e.preventDefault();
-    console.log("PROPS.HREF: ", props.href);
     props.onClick && props.onClick(props.text);
     router.push(props.href);
   };
