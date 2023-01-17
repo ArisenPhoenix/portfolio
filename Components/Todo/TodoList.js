@@ -1,6 +1,7 @@
 import css from "./TodoList.module.css";
 import { useDispatch } from "react-redux";
-import { TodoSliceActions } from "../../Merkurial/store/Redux/Store";
+// import { TodoSliceActions } from "../../Merkurial/store/Redux/Store";
+import { TodoSliceActions } from "../../store/Redux/Store";
 const { removeItem } = TodoSliceActions;
 
 const TodoList = (props) => {
