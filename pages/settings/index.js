@@ -1,6 +1,7 @@
 import MERK_THEMES from "../../Merkurial/CSS/Themes/MERK_THEMES";
-import { ThemeProviderActions } from "../../Merkurial/store/Redux/Store";
+import { ThemeProviderActions } from "../../store/Redux/Store";
 import { useDispatch } from "react-redux";
+import Heading from "../../Components/UI/Text/Heading";
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const Settings = () => {
 
   return (
     <>
-      <h1>Settings</h1>
+      <Heading text="Settings" />
       {themes.map((theme, index) => {
         return (
           <button key={`${index}|${theme}`} name={theme} onClick={handleClick}>

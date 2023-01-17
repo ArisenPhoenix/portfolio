@@ -1,7 +1,8 @@
 .Bottom {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   background-color: black;
+  align-items: center;
 }
 
 .copyright {
@@ -11,8 +12,13 @@
 }
 
 .dateDiv {
-  width: 50%;
+  width: 33%;
   margin: auto;
   background-color: transparent;
   text-align: center;
+}
+
+.buttonDiv {
+  width: 33%;
+  margin: auto;
 }

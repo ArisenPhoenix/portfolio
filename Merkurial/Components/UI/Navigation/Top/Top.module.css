@@ -1,8 +1,8 @@
 .topContainer {
   width: 100%;
-  height: 8% !important;
+  height: 6% !important;
   background-color: black;
-  color: white;
+  /* color: white; */
   padding-left: 2%;
   padding-right: 2%;
   align-items: center;
