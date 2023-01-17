@@ -1,5 +1,4 @@
 .blogCard {
-  background-color: black;
   margin: 0 0 30px 0;
   padding: 5px;
   width: 100%;
@@ -7,6 +6,10 @@
   border-radius: 10px;
   border-style: inset;
   transition-property: inset;
+}
+
+.blogContainer {
+  background-color: transparent !important;
 }
 
 .blogCard:hover {

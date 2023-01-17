@@ -8,7 +8,6 @@ export const getBlogs = async (functionObj, fromWhere) => {
     : console.log("GETTING BLOGS");
 
   const allBlogs = await FETCH("/api/blogs", "GET");
-  console.log("ALL BLOGS: ", allBlogs);
 
   if (Array.isArray(allBlogs)) {
     setBlogs(allBlogs);

@@ -6,9 +6,20 @@
   background-image: url("../../media/tree.jpg");
   background-attachment: scroll;
   background-position: center;
+  background-color: transparent !important;
   min-height: 100vh;
+  padding: 2%;
 }
 
 .color {
   background-color: rgba(255, 89, 0, 0.434);
+}
+
+.buttonDiv {
+  background-color: transparent !important;
+  margin-bottom: 2rem !important;
+}
+
+.blog {
+  margin-top: 2rem;
 }

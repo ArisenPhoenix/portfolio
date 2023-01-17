@@ -7,8 +7,6 @@ import React from "react";
 import CREATE_REACT_KEY from "../../../../Helpers/Misc/createReactKey";
 
 const BasicBottom = (props) => {
-  const footerObjs = props.footerObjs ? props.footerObjs : [];
-  const copyrightDate = new Date().getFullYear();
   const classes = useClass([css.bottomContainer, navCss.bottom]);
   return (
     <div className={classes}>
@@ -19,14 +17,10 @@ const BasicBottom = (props) => {
         />
       </Head>
       {footerObjs.map((Obj, index) => {
-        const Component = Obj.Component;
-        const args = Obj.args;
+        const Component = Obj?.Component;
+        const args = Obj?.args ? Obj.args : {};
         return <Component {...args} key={CREATE_REACT_KEY(index)} />;
       })}
-
-      <div className={`${css.dateDiv} ${css.break}`}>
-        <p className={css.date}>Copyright {copyrightDate}</p>
-      </div>
     </div>
   );
 };

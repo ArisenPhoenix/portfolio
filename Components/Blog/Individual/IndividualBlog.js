@@ -2,7 +2,7 @@ import css from "./individualBlog.module.css";
 import Card from "../../UI/Card/Card";
 import { useRouter } from "next/router";
 import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
-import { RETREIVE_FROM_LOCAL_STORAGE } from "../../../Merkurial/API_STORAGE/STORAGe/HANDLE_STORAGE";
+import { RETREIVE_FROM_LOCAL_STORAGE } from "../../../Merkurial/API_STORAGE/STORAGE/HANDLE_STORAGE";
 import { useEffect, useState } from "react";
 
 const IndividualBlog = (props) => {
@@ -26,9 +26,9 @@ const IndividualBlog = (props) => {
   const { bg, text, bgGlass } = theme;
 
   const { GENERAL, BORDERS, SPACING, DIMENSIONS } = styles;
-  const { lgMT, lgPT, mdPY, smPY } = SPACING;
-  const { twoThirdX, wholeY, wholeVY } = DIMENSIONS;
-  const { solid, roundgold, roundsilver } = BORDERS;
+  const { lgPT, smPY } = SPACING;
+  const { twoThirdX, wholeVY } = DIMENSIONS;
+  const { solid, roundsilver } = BORDERS;
   const { centerAll } = GENERAL;
   const container = useClass([bg, text, lgPT, wholeVY, css.bg]);
   const mainCardClass = useClass([
@@ -47,7 +47,6 @@ const IndividualBlog = (props) => {
       <Card id={post._id} className={mainCardClass}>
         <div className={textDiv}>
           <h1 className={bgGlass}>{post.title}</h1>
-
           <p>{post.body}</p>
           <p>{post.author}</p>
         </div>

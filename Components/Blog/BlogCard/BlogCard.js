@@ -4,10 +4,9 @@ import { useSelect, useClass } from "../../../Merkurial/hooks/usehooks";
 import { useRouter } from "next/router";
 import { SAVE_TO_LOCAL_STORAGE } from "../../../Merkurial/API_STORAGE/STORAGE/HANDLE_STORAGE";
 import { LINKIFY } from "../../../Merkurial/Helpers/Text/Linkify";
-import { useDispatch } from "react-redux";
 
 const BlogCard = (props) => {
-  const transparentCardClass = useClass([css.blogCard, props.className]);
+  const transparentCardClass = useClass([css.blogCard]);
   return <div className={transparentCardClass}>{props.children}</div>;
 };
 
@@ -44,33 +43,25 @@ const BackSide = (props) => {
   );
 };
 
-// const OuterBlogCard = () =>
-
 const FlipCard = (props) => {
-  const dispatch = useDispatch();
-  const { theme, animations } = useSelect("THEME");
+  const { animations } = useSelect("THEME");
   const { FLIPCARD } = animations;
-  const { text } = theme;
   const { back, front, flipY180, inner3D, threeD, card } = FLIPCARD;
-  const backSide = useClass([back, text]);
-  const frontSide = useClass([front, text]);
+  const backSide = useClass([back]);
+  const frontSide = useClass([front]);
   const containerClass = useClass([flipY180, threeD]);
-  const innerContainerClass = useClass([card]);
+  const innerContainerClass = useClass([card, threeD]);
   const router = useRouter();
 
   const handleClick = (e) => {
     e.preventDefault();
     const title = props.title;
     let link = props.title;
-
     if (link.includes("#")) {
       link = link.replace("#", "number");
     }
-
-    link = LINKIFY(link, "blog").link;
-
+    link = LINKIFY(link, "blog");
     link = link + "-id-" + props._id;
-
     const query = {
       author: props.author,
       body: props.body,

@@ -1,20 +1,21 @@
-import BootStrapGridder from "../../UI/BootStrap/BootStrapGridder";
+import BootStrapGridder from "../../../Merkurial/Components/UI/BootStrap/BootStrapGridder";
 import { Col } from "react-bootstrap";
 import BlogCard from "../BlogCard/BlogCard";
-import { useClass, useSelect } from "../../../Merkurial/hooks/usehooks";
+import css from "./DisplayBlogs.module.css";
 
 const DisplayBlogs = (props) => {
-  const { styles } = useSelect("THEME");
-  const { GENERAL } = styles;
-  const { transparent } = GENERAL;
-  const blogContainerClass = useClass([transparent]);
-
   return (
-    <div className={blogContainerClass}>
-      <BootStrapGridder fluid="true">
+    <div className={css.blogContainer}>
+      <BootStrapGridder fluid="true" className={css.blogContainer}>
         {props.blogs.map((blog, index) => {
           return (
-            <Col xs="12" md="6" lg="6" key={`Col ${blog.title} ${index}`}>
+            <Col
+              className={css.blogContainer}
+              xs="12"
+              md="6"
+              lg="6"
+              key={`Col ${blog.title} ${index}`}
+            >
               <BlogCard
                 key={blog._id}
                 _id={blog._id}

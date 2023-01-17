@@ -48,8 +48,6 @@ const BlogPage = () => {
     };
     if (!isLoaded) {
       setIsLoaded(true);
-      // console.log("IN ASYNC FUNCTION !ISLOADED");
-
       const allBlogs = getBlogs(blogReqs, "FROM LOADED = TRUE");
       if (!allBlogs.err) {
         setIsRunning(true);
@@ -63,7 +61,6 @@ const BlogPage = () => {
           setIsRunning(true);
         }
       } else {
-        // console.log("SETTING BLOGS TO LOCALLY STORED ONES");
         setBlogs(retreivedBlogs);
       }
       setIsRunning(true);
@@ -93,10 +90,9 @@ const BlogPage = () => {
           onClick={handleClick}
         />
       )}
-      <Heading text="Blog Page" />
 
       {blogs.length > 0 ? (
-        <Blog blogs={blogs} />
+        <Blog blogs={blogs} className={css.blog} />
       ) : errorMessage ? (
         <h2>{errorMessage}</h2>
       ) : (

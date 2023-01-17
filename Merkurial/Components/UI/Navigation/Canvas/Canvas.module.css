@@ -3,7 +3,6 @@
   margin: 0;
   margin-top: 0;
   margin-bottom: 0;
-  background-color: rgba(250, 235, 215, 0.189);
+  background-color: transparent !important;
   border-radius: 8px;
-  /* background-color: black !important; */
 }
